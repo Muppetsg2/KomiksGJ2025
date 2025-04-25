@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -15,6 +14,10 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         //rb = GetComponent<Rigidbody2D>();
+        InputManager.Instance.OnInteractPressed += OnInteract;
+        InputManager.Instance.OnAttackPressed += OnAttack;
+        InputManager.Instance.OnJumpPressed += OnJump;
+        InputManager.Instance.OnMove += OnMove;
     }
 
     // Update is called once per frame
@@ -47,9 +50,9 @@ public class PlayerMovement : MonoBehaviour
 
     #region [ Input ]
 
-    public void OnMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
+    public void OnMove(Vector2 move) => movementInput = move;
 
-    public void OnJump(InputAction.CallbackContext ctx)
+    public void OnJump()
     {
         if (!isJumping)
         {
@@ -58,12 +61,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void OnAttack(InputAction.CallbackContext ctx)
+    public void OnAttack()
     {
 
     }
 
-    public void OnInteract(InputAction.CallbackContext ctx)
+    public void OnInteract()
     {
 
     }
