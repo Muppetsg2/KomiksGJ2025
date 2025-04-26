@@ -4,16 +4,18 @@ public class DialogueTriggerTest : MonoBehaviour
 {
     public TextAsset dialogueContent;
 
-    void Update()
+    private void Start()
+    {
+        InputManager.Instance.OnNextPressed += () => { StartClicked(); };
+    }
+
+    public void StartClicked()
     {
         if (DialogueManager.Instance.dialogueIsPlaying)
         {
             return;
         }
-        
-        if (InputManager.Instance.GetNextPressed())
-        {
-            DialogueManager.Instance.EnterDialogueMode(dialogueContent);
-        }
+
+        DialogueManager.Instance.EnterDialogueMode(dialogueContent);
     }
 }

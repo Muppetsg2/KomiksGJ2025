@@ -40,16 +40,18 @@ public class DialogueManager : MonoBehaviour
     private void Start()
     {
         ExitDialogueModeRaw();
+
+        InputManager.Instance.OnNextPressed += NextPressed;
     }
 
-    private void Update()
+    private void NextPressed()
     {
         if (!dialogueIsPlaying)
         {
             return;
         }
 
-        if (InputManager.Instance.GetNextPressed() && !nextBlocked)
+        if (!nextBlocked)
         {
             ContinueStory();
         }
@@ -61,7 +63,7 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
 
-        ContinueStory();
+        //ContinueStory();
     }
 
     private IEnumerator ExitDialogueMode()
@@ -97,7 +99,7 @@ public class DialogueManager : MonoBehaviour
 
         if (currentChoice.Count == 0) return;
 
-        nextBlocked = true;
+        InputManager.Instance.OnNextPressed -= NextPressed;
 
         if (currentChoice.Count > maxChoiceNum)
         {
@@ -132,7 +134,7 @@ public class DialogueManager : MonoBehaviour
 
         ContinueStory();
 
-        nextBlocked = false;
+        InputManager.Instance.OnNextPressed += NextPressed;
     }
 
     private void ClearChoices()

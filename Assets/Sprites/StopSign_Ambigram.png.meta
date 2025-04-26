@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      StopSign_Ambigram_0: -827357370296395028
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
