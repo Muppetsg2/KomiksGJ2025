@@ -121,8 +121,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   isFacingRight: 0
-  jumpPower: 5
+  jumpPower: 10
   isJumping: 0
+  isGrounded: 0
+  baseGravity: 1.5
+  maxFallSpeed: 15
+  fallGravityMult: 2
   rb: {fileID: 2035814513951364769}
 --- !u!50 &2035814513951364769
 Rigidbody2D:
@@ -140,7 +144,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 083b8d44bd2e66e4fa9d2754dabd1de4, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
