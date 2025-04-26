@@ -121,10 +121,10 @@ TextureImporter:
         serializedVersion: 2
         x: 6
         y: 12
-        width: 76
-        height: 43
+        width: 90
+        height: 72
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -137,33 +137,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: icon_SPIN_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 50
-        width: 79
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b370fae8e06bca360800000000000000
-      internalID: 7182315679388731195
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 1b09e807857fad84fa12babc10ee4e3c
     internalID: 0
     vertices: []
     indices: 
@@ -172,7 +150,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      icon_SPIN_0: 7047997713058401669
+      icon_SPIN_1: 7182315679388731195
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
