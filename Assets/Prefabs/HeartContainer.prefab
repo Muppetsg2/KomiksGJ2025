@@ -76,6 +76,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heartPrefab: {fileID: 4186298990521584861, guid: 91646ba7b02eaf94bbcdd7324a2f8911, type: 3}
-  fullHeartSprite: {fileID: 5829791041885847116, guid: a9c3f76b2988a6a49ae9b8c55544a526, type: 3}
-  emptyHeartSprite: {fileID: -2327227197064245083, guid: 4c4316c3a13090d4a81fd7437d33354e, type: 3}
+  fullHeartSprite: {fileID: 5829791041885847116, guid: c885f01a557d9c742ba4a14f325f62ca, type: 3}
+  emptyHeartSprite: {fileID: -2327227197064245083, guid: 7229338398cf2cb4aa786820387585fd, type: 3}
   hearts: []
