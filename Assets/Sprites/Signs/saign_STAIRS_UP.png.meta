@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      saign_STAIRS_UP_0: 7904333900621922480
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
