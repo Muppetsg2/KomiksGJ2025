@@ -1,7 +1,7 @@
 -> main
 
 === main ===
-I am a nerd if you want to know!!!! #speaker:Nerd #portrait:nerd_talk #layout:right
+I am a nerd if you want to know!!!! #speaker:0 #portrait:neutral #layout:right
 HAHAHAHAHAHAH!!!!
 
 But I want to know... which game was first?
@@ -11,9 +11,11 @@ But I want to know... which game was first?
 
 === gameChosen(game) ===
 {game == "DonkeyKong":
-    You are right!!! Congratulations!!! -> END
+    First game was <b><color=\#FF22F4>Donkey Kong</color></b> #speaker:1 #layout:left
+    You are right!!! <link=gradient+wiggle>Congratulations!!!</link> #speaker:0 #portrait:happy #layout:right
+    -> END
 - else:
-    You are wrong!!!
+    You are wrong!!! #portrait:angry #layout:left
     -> badChoice("Good choice was Donkey Kong")
 }
 
