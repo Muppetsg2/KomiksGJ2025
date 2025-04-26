@@ -23,18 +23,6 @@ public class SignManager : MonoBehaviour
     public event SignFlippedEventHandler OnFlip;
     public event SignRuinedEventHandler OnRuined;
 
-    private void OnValidate()
-    {
-        if (flipX)
-        {
-            toFlip.flipX = flipped;
-        }
-        if (flipY)
-        {
-            toFlip.flipY = flipped;
-        }
-    }
-
     private void Start()
     {
         if (InputManager.Instance == null)
