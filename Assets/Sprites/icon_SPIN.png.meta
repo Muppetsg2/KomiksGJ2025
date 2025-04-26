@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: c885f01a557d9c742ba4a14f325f62ca
+guid: 2e226a0ce4b35e540adfe8017b7ab825
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5829791041885847116
-    second: heart_FULL_0
+      213: 7047997713058401669
+    second: icon_SPIN_0
+  - first:
+      213: 7182315679388731195
+    second: icon_SPIN_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: heart_FULL_0
+      name: icon_SPIN_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 5
-        width: 93
-        height: 80
+        x: 6
+        y: 12
+        width: 76
+        height: 43
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c4e3c56a01497e050800000000000000
-      internalID: 5829791041885847116
+      spriteID: 58d8c9004948fc160800000000000000
+      internalID: 7047997713058401669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_SPIN_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 50
+        width: 79
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b370fae8e06bca360800000000000000
+      internalID: 7182315679388731195
       vertices: []
       indices: 
       edges: []
@@ -147,8 +172,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      heart_FULL_0: 5829791041885847116
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
