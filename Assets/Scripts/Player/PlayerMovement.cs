@@ -1,5 +1,7 @@
 using UnityEngine;
 
+public delegate void OnJumpStartedEventHandler();
+
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
@@ -9,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     Vector2 movementInput = Vector2.zero;
 
     public Rigidbody2D rb;
+
+    public event OnJumpStartedEventHandler OnJumpStarted;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
             isJumping = true;
+            OnJumpStarted?.Invoke();
         }
     }
 
