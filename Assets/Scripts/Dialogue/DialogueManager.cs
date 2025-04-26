@@ -4,13 +4,18 @@ using Ink.Runtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using UnityEditor;
+using EasyTextEffects;
 
 public class DialogueManager : MonoBehaviour
 {
+    [Header("Params")]
+    [SerializeField] private float typingSpeed = 0.04f;
+
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
+    [SerializeField] private GameObject continueIcon;
     [SerializeField] private TextMeshProUGUI dialogueText;
+    [SerializeField] private TextEffect dialogueTextEfect;
 
     [Header("Choices UI")]
     [SerializeField] private GameObject dialogueChoicesParent;
@@ -20,6 +25,20 @@ public class DialogueManager : MonoBehaviour
     private int maxChoiceNum = 4;
     private Coroutine typeCoroutine;
 
+    [Header("Speakers")]
+    [SerializeField] private GameObject rightSpeaker;
+    [SerializeField] private TextMeshProUGUI rightSpeakerDisplayName;
+    [SerializeField] private Image rightSpeakerImage;
+    [SerializeField] private GameObject leftSpeaker;
+    [SerializeField] private TextMeshProUGUI leftSpeakerDisplayName;
+    [SerializeField] private Image leftSpeakerImage;
+    [SerializeField] private SpeakerObject[] speakers;
+
+    private int actualSpeaker = 0;
+    private TextMeshProUGUI actualDisplayName;
+    private Image actualSpeakerImage;
+    private bool left = true;
+
     private Story currentStory;
 
     private static DialogueManager instance;
@@ -27,6 +46,13 @@ public class DialogueManager : MonoBehaviour
     public static DialogueManager Instance { get { return instance; } }
 
     public bool dialogueIsPlaying { get; private set; }
+
+    private bool canContinueToTheNextLine = true;
+    private bool buttonClickedWhileTyping = false;
+
+    private const string SPEAKER_TAG = "speaker";
+    private const string PORTRAIT_TAG = "portrait";
+    private const string LAYOUT_TAG = "layout";
 
     private void Awake()
     {
@@ -42,6 +68,8 @@ public class DialogueManager : MonoBehaviour
     {
         ExitDialogueModeRaw();
 
+        SwitchLayout(left);
+
         InputManager.Instance.OnNextPressed += NextPressed;
     }
 
@@ -52,9 +80,15 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        if (currentStory.currentChoices.Count == 0)
+        if (canContinueToTheNextLine && currentStory.currentChoices.Count == 0)
         {
             ContinueStory();
+            return;
+        }
+
+        if (!canContinueToTheNextLine)
+        {
+            buttonClickedWhileTyping = true;
         }
     }
 
@@ -63,6 +97,11 @@ public class DialogueManager : MonoBehaviour
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
+
+        actualDisplayName.text = "???";
+        actualSpeaker = 0;
+        SwitchLayout(false);
+        continueIcon.SetActive(false);
     }
 
     private IEnumerator ExitDialogueMode()
@@ -85,12 +124,77 @@ public class DialogueManager : MonoBehaviour
         {
             if (typeCoroutine != null) StopCoroutine(typeCoroutine);
             typeCoroutine = StartCoroutine(TypeText(currentStory.Continue()));
-            DisplayChoices();
+            HandleTags(currentStory.currentTags);
         }
         else
         {
             StartCoroutine(ExitDialogueMode());
         }
+    }
+
+    private void HandleTags(List<string> currentTags)
+    {
+        foreach (string tag in currentTags)
+        {
+            string[] splitTag = tag.Split(':');
+            if (splitTag.Length != 2)
+            {
+                Debug.LogError("Tag could not be appropriately parsed: " + tag);
+            }
+            string tagKey = splitTag[0].Trim();
+            string tagValue = splitTag[1].Trim();
+
+            switch (tagKey) 
+            {
+                case SPEAKER_TAG:
+                    int speaker = int.Parse(tagValue);
+                    string text = "???";
+                    if (speaker >= 0 && speaker < speakers.Length)
+                    {
+                        actualSpeaker = speaker;
+                        text = speakers[speaker].displayName;
+                    }
+                    actualDisplayName.text = text;
+                    break;
+                case PORTRAIT_TAG:
+                    actualSpeakerImage.sprite = speakers[actualSpeaker].GetSprite(tagValue);
+                    break;
+                case LAYOUT_TAG:
+                    SwitchLayout(tagValue == "left");
+                    break;
+                default:
+                    Debug.LogError("Tag came in but is not currently being handle: " + tag);
+                    break;
+            }
+        }
+    }
+
+    private void SwitchLayout(bool _left)
+    {
+        left = _left;
+
+        string text = actualDisplayName == null ? "???" : actualDisplayName.text;
+        Sprite s = actualSpeakerImage == null ? null : actualSpeakerImage.sprite;
+
+        if (left) 
+        {
+            rightSpeaker.SetActive(false);
+            leftSpeaker.SetActive(true);
+
+            actualDisplayName = leftSpeakerDisplayName;
+            actualSpeakerImage = leftSpeakerImage;
+        }
+        else
+        {
+            rightSpeaker.SetActive(true);
+            leftSpeaker.SetActive(false);
+
+            actualDisplayName = rightSpeakerDisplayName;
+            actualSpeakerImage = rightSpeakerImage;
+        }
+
+        actualDisplayName.text = text;
+        actualSpeakerImage.sprite = s;
     }
 
     private void DisplayChoices()
@@ -124,14 +228,16 @@ public class DialogueManager : MonoBehaviour
 
     public void MakeChoice(int choiceIndex)
     {
-        currentStory.ChooseChoiceIndex(choiceIndex);
+        if (canContinueToTheNextLine)
+        {
+            currentStory.ChooseChoiceIndex(choiceIndex);
 
-        ClearChoices();
+            ClearChoices();
 
-        if (typeCoroutine != null) StopCoroutine(typeCoroutine);
-        typeCoroutine = StartCoroutine(TypeText(currentStory.Continue()));
+            currentStory.Continue();
 
-        ContinueStory();
+            ContinueStory();
+        }
     }
 
     private void ClearChoices()
@@ -140,24 +246,56 @@ public class DialogueManager : MonoBehaviour
         {
             System.Array.Clear(choicesText, 0, choicesText.Length);
         }
-        foreach (var ch in choices)
-        {
-            DestroyImmediate(ch.gameObject);
-        }
         if (choices.Length != 0)
         {
+            foreach (var ch in choices)
+            {
+                DestroyImmediate(ch.gameObject);
+            }
             System.Array.Clear(choices, 0, choices.Length);
         }
     }
 
     private IEnumerator TypeText(string text)
     {
-
         dialogueText.text = "";
+
+        continueIcon.SetActive(false);
+        //ClearChoices();
+
+        canContinueToTheNextLine = false;
+        bool isAddingRichTextTag = false;
+
         foreach (char letter in text.ToCharArray())
         {
-            dialogueText.text += letter;
-            yield return null;
+            if (buttonClickedWhileTyping)
+            {
+                buttonClickedWhileTyping = false;
+                dialogueText.text = text;
+                break;
+            }
+
+            if (letter == '<' || isAddingRichTextTag)
+            {
+                isAddingRichTextTag = true;
+                dialogueText.text += letter;
+
+                if (letter == '>')
+                {
+                    isAddingRichTextTag = false;
+                    dialogueTextEfect.Refresh();
+                }
+            }
+            else
+            {
+                dialogueText.text += letter;
+                yield return new WaitForSeconds(typingSpeed);
+            }
         }
+
+        continueIcon.SetActive(true);
+        DisplayChoices();
+
+        canContinueToTheNextLine = true;
     }
 }
