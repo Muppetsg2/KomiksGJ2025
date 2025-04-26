@@ -4,6 +4,7 @@ using Ink.Runtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -14,10 +15,10 @@ public class DialogueManager : MonoBehaviour
     [Header("Choices UI")]
     [SerializeField] private GameObject dialogueChoicesParent;
     [SerializeField] private GameObject choicePrefab;
-    private GameObject[] choices = {};
+    private GameObject[] choices = { };
     private TextMeshProUGUI[] choicesText = { };
     private int maxChoiceNum = 4;
-    private bool nextBlocked = false;
+    private Coroutine typeCoroutine;
 
     private Story currentStory;
 
@@ -25,7 +26,7 @@ public class DialogueManager : MonoBehaviour
 
     public static DialogueManager Instance { get { return instance; } }
 
-    public bool dialogueIsPlaying {  get; private set; }
+    public bool dialogueIsPlaying { get; private set; }
 
     private void Awake()
     {
@@ -51,7 +52,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        if (!nextBlocked)
+        if (currentStory.currentChoices.Count == 0)
         {
             ContinueStory();
         }
@@ -62,8 +63,6 @@ public class DialogueManager : MonoBehaviour
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
-
-        //ContinueStory();
     }
 
     private IEnumerator ExitDialogueMode()
@@ -84,7 +83,8 @@ public class DialogueManager : MonoBehaviour
     {
         if (currentStory.canContinue)
         {
-            dialogueText.text = currentStory.Continue();
+            if (typeCoroutine != null) StopCoroutine(typeCoroutine);
+            typeCoroutine = StartCoroutine(TypeText(currentStory.Continue()));
             DisplayChoices();
         }
         else
@@ -98,8 +98,6 @@ public class DialogueManager : MonoBehaviour
         List<Choice> currentChoice = currentStory.currentChoices;
 
         if (currentChoice.Count == 0) return;
-
-        InputManager.Instance.OnNextPressed -= NextPressed;
 
         if (currentChoice.Count > maxChoiceNum)
         {
@@ -130,11 +128,10 @@ public class DialogueManager : MonoBehaviour
 
         ClearChoices();
 
-        dialogueText.text = currentStory.Continue();
+        if (typeCoroutine != null) StopCoroutine(typeCoroutine);
+        typeCoroutine = StartCoroutine(TypeText(currentStory.Continue()));
 
         ContinueStory();
-
-        InputManager.Instance.OnNextPressed += NextPressed;
     }
 
     private void ClearChoices()
@@ -150,6 +147,17 @@ public class DialogueManager : MonoBehaviour
         if (choices.Length != 0)
         {
             System.Array.Clear(choices, 0, choices.Length);
+        }
+    }
+
+    private IEnumerator TypeText(string text)
+    {
+
+        dialogueText.text = "";
+        foreach (char letter in text.ToCharArray())
+        {
+            dialogueText.text += letter;
+            yield return null;
         }
     }
 }
