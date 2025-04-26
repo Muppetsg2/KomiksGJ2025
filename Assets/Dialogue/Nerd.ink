@@ -1,7 +1,7 @@
 -> main
 
 === main ===
-I am a nerd if you want to know!!!!
+I am a nerd if you want to know!!!! #speaker:Nerd #portrait:nerd_talk #layout:right
 HAHAHAHAHAHAH!!!!
 
 But I want to know... which game was first?
