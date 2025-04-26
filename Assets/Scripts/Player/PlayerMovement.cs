@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Attack")]
     public GameObject attackPoint;
-    public float attackRadius;
+    public float attackRadius = 0.5f;
     public LayerMask enemies;
     public bool canAttack = true;
     public float attackCooldown = 2f;
@@ -127,10 +127,6 @@ public class PlayerMovement : MonoBehaviour
             }
 
             StartCoroutine(StartAttackCooldown());
-        }
-        else
-        {
-            int x = 1;
         }
     }
 
