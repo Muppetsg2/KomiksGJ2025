@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public delegate void NextPressedEventHandler();
 public delegate void InteractPressedEventHandler();
 public delegate void JumpPressedEventHandler();
 public delegate void AttackPressedEventHandler();
@@ -9,10 +10,9 @@ public delegate void MoveEventHandler(Vector2 move);
 [RequireComponent(typeof(PlayerInput))]
 public class InputManager : MonoBehaviour
 {
-    private bool nextPressed = false;
-
     private static InputManager instance;
 
+    public event NextPressedEventHandler OnNextPressed;
     public event InteractPressedEventHandler OnInteractPressed;
     public event JumpPressedEventHandler OnJumpPressed;
     public event AttackPressedEventHandler OnAttackPressed;
@@ -75,18 +75,7 @@ public class InputManager : MonoBehaviour
     {
         if (context.performed)
         {
-            nextPressed = true;
+            OnNextPressed?.Invoke();
         }
-        else if (context.canceled)
-        {
-            nextPressed = false;
-        }
-    }
-
-    public bool GetNextPressed()
-    {
-        bool result = nextPressed;
-        nextPressed = false;
-        return result;
     }
 }
