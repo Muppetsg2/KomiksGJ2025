@@ -111,6 +111,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VerticalDirectionSign Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3991356960455217283, guid: f46958738ae651a49bda3ca163d3a1f7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6600655223005198036, guid: f46958738ae651a49bda3ca163d3a1f7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 31.55

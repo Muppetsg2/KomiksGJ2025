@@ -25,6 +25,13 @@ public class PlayerMovement : MonoBehaviour
     public bool canAttack = true;
     public float attackCooldown = 2f;
 
+    [Header("Knockback")]
+    public float signKnockbackForce = 10f;
+    public float knockback = 0f;
+    public float knockbackSmoothTime = 1f;
+    private float knockbackVelocity = 0;
+    private float epsilon = 5f;
+
     public Rigidbody2D rb;
 
     public event OnJumpStartedEventHandler OnJumpStarted;
@@ -50,7 +57,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(movementInput.x * moveSpeed, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(movementInput.x * moveSpeed + knockback, rb.linearVelocity.y);
+
+        if (Mathf.Abs(knockback) > 0)
+        {
+            knockback = Mathf.SmoothDamp(knockback, 0f, ref knockbackVelocity, knockbackSmoothTime);
+            if (Mathf.Abs(knockback) < epsilon)
+            {
+                knockback = 0f;
+            }
+        }
 
         Gravity();
 
@@ -99,6 +115,12 @@ public class PlayerMovement : MonoBehaviour
         attackPoint.GetComponent<SpriteRenderer>().color = Color.white;
     }
 
+    public void Knockback(Transform source, float knockbackForce)
+    {
+        Vector2 direction = new Vector2(transform.position.x - source.position.x, 0).normalized;
+        knockback = direction.x * knockbackForce;
+    }
+
     #region [ Input ]
 
     public void OnMove(Vector2 move) => movementInput = move;
@@ -131,7 +153,10 @@ public class PlayerMovement : MonoBehaviour
 
             foreach (Collider2D signGameObject in signs)
             {
-                signGameObject.gameObject.GetComponent<SignManager>().Ruin();
+                if(!signGameObject.gameObject.GetComponent<SignManager>().Ruin())
+                {
+                    Knockback(signGameObject.gameObject.transform, signKnockbackForce);
+                }
             }
 
             StartCoroutine(StartAttackCooldown());
