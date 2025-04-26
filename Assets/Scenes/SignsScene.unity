@@ -344,7 +344,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3310853917693951102, guid: eba061bba035eb5428c1c74fab906c88, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 29.96
+      value: -3.21
       objectReference: {fileID: 0}
     - target: {fileID: 3310853917693951102, guid: eba061bba035eb5428c1c74fab906c88, type: 3}
       propertyPath: m_LocalPosition.y
@@ -881,13 +881,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 360384334841660502, guid: f46958738ae651a49bda3ca163d3a1f7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 360384334841660502, guid: f46958738ae651a49bda3ca163d3a1f7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 360384334841660502, guid: f46958738ae651a49bda3ca163d3a1f7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 360384334841660502, guid: f46958738ae651a49bda3ca163d3a1f7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.89
+      objectReference: {fileID: 0}
     - target: {fileID: 3991356960455217283, guid: f46958738ae651a49bda3ca163d3a1f7, type: 3}
       propertyPath: m_Name
       value: SimpleRoundedSign
       objectReference: {fileID: 0}
+    - target: {fileID: 5190750132813141767, guid: f46958738ae651a49bda3ca163d3a1f7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 761763707610910805, guid: 29721f3750001da4eba40109a6e24605, type: 3}
     - target: {fileID: 6600655223005198036, guid: f46958738ae651a49bda3ca163d3a1f7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.26
+      value: 6.2
       objectReference: {fileID: 0}
     - target: {fileID: 6600655223005198036, guid: f46958738ae651a49bda3ca163d3a1f7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -926,7 +946,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 9158442372849680785, guid: f46958738ae651a49bda3ca163d3a1f7, type: 3}
+    - {fileID: 8153940725646525262, guid: f46958738ae651a49bda3ca163d3a1f7, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f46958738ae651a49bda3ca163d3a1f7, type: 3}
