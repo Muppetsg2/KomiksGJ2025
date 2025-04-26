@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: f83cffdaf4b71d94eb0118767f14efe9
+guid: c4ee724438ac4b04aa8079355ad2e823
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -777375220287752051
-    second: run_frame_0014_0
+      213: 1419178340750263368
+    second: jump_frame_0002_0
+  - first:
+      213: 2210429507711355551
+    second: jump_frame_0002_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +116,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: run_frame_0014_0
+      name: jump_frame_0002_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 200
-        height: 350
+        x: 61
+        y: 59
+        width: 125
+        height: 291
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d88be891b553635f0800000000000000
-      internalID: -777375220287752051
+      spriteID: 84409598e2fe1b310800000000000000
+      internalID: 1419178340750263368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump_frame_0002_1
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 139
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9a4d280de50dae10800000000000000
+      internalID: 2210429507711355551
       vertices: []
       indices: 
       edges: []
@@ -138,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2ad17ea377f329b49aac60e56cca0e5a
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -147,8 +172,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      run_frame_0014_0: -777375220287752051
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

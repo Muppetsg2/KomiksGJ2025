@@ -6,6 +6,7 @@ public delegate void OnJumpStartedEventHandler();
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    public float moveSmooting = 0.5f;
     public bool isFacingRight = false;
     public float jumpPower = 10f;
     public bool isJumping = false;
@@ -34,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody2D rb;
 
+    public Animator animator;
+
     public event OnJumpStartedEventHandler OnJumpStarted;
     private CapsuleCollider2D capsuleCollider;
 
@@ -57,7 +60,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(movementInput.x * moveSpeed + knockback, rb.linearVelocity.y);
+        float desiredVelocityX = movementInput.x * moveSpeed;
+        if (movementInput.x != 0)
+        {
+            rb.linearVelocityX += movementInput.x * moveSpeed * Time.fixedDeltaTime;
+        }
+
+        rb.linearVelocityX = desiredVelocityX * (1f - moveSmooting) + rb.linearVelocityX * moveSmooting;
 
         if (Mathf.Abs(knockback) > 0)
         {
@@ -123,7 +132,20 @@ public class PlayerMovement : MonoBehaviour
 
     #region [ Input ]
 
-    public void OnMove(Vector2 move) => movementInput = move;
+    public void OnMove(Vector2 move)
+    {
+        if (move.x != 0)
+        {
+            animator.ResetTrigger("RunStop");
+            animator.SetTrigger("RunStart");
+        }
+        else
+        {
+            animator.ResetTrigger("RunStart");
+            animator.SetTrigger("RunStop");
+        }
+        movementInput = move;
+    }
 
     public void OnJump()
     {
