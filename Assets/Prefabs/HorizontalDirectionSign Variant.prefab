@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8970776038201654821}
   - component: {fileID: 3711979897099813941}
   m_Layer: 0
-  m_Name: collider
+  m_Name: effectCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,6 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sign: {fileID: 622106018572549205}
   moveAwayTime: 0.5
+  initDirectionIsLeft: 1
+  isLeft: 1
 --- !u!61 &3711979897099813941
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -103,11 +105,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2318253124130488386, guid: 8cb13f5fbcd87e24885a9f4ce384c1be, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.89
+      value: 39.63
       objectReference: {fileID: 0}
     - target: {fileID: 2318253124130488386, guid: 8cb13f5fbcd87e24885a9f4ce384c1be, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 11.14
       objectReference: {fileID: 0}
     - target: {fileID: 2318253124130488386, guid: 8cb13f5fbcd87e24885a9f4ce384c1be, type: 3}
       propertyPath: m_LocalPosition.z
@@ -119,15 +121,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2318253124130488386, guid: 8cb13f5fbcd87e24885a9f4ce384c1be, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2318253124130488386, guid: 8cb13f5fbcd87e24885a9f4ce384c1be, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2318253124130488386, guid: 8cb13f5fbcd87e24885a9f4ce384c1be, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2318253124130488386, guid: 8cb13f5fbcd87e24885a9f4ce384c1be, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
