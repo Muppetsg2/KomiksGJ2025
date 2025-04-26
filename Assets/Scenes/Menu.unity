@@ -920,6 +920,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 1777063233}
   levels:
   - {fileID: 11400000, guid: 5cd55c3b6a40b2a43b67b07cc21a05d0, type: 2}
+  - {fileID: 11400000, guid: 6a7f7166ef4eb294f9b76956532366c8, type: 2}
   levelPrefab: {fileID: 7362089753529752413, guid: 92e3ecdf908309b4f9e42e8ae9ccfb23, type: 3}
 --- !u!1 &806757805
 GameObject:
