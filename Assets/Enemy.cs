@@ -13,8 +13,13 @@ public class Enemy : MonoBehaviour
 
     public GameObject followTarget;
 
+    [Header("Health")]
+    public int currentHealth;
+    public int maxHealth = 1;
+
     void Start()
     {
+        currentHealth = maxHealth;
         patrol.StartPatrol();
     }
 
@@ -54,6 +59,16 @@ public class Enemy : MonoBehaviour
         {
             followTarget = null;
             patrol.StartPatrol();
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }

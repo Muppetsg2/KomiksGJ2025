@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public delegate void OnJumpStartedEventHandler();
@@ -15,6 +16,13 @@ public class PlayerMovement : MonoBehaviour
     public float baseGravity = 1f;
     public float maxFallSpeed = 5f;
     public float fallGravityMult = 1.1f;
+
+    [Header("Attack")]
+    public GameObject attackPoint;
+    public float attackRadius;
+    public LayerMask enemies;
+    public bool canAttack = true;
+    public float attackCooldown = 2f;
 
     public Rigidbody2D rb;
 
@@ -77,6 +85,18 @@ public class PlayerMovement : MonoBehaviour
     //    isJumping = false;
     //}
 
+    public IEnumerator StartAttackCooldown()
+    {
+        canAttack = false;
+
+        attackPoint.GetComponent<SpriteRenderer>().color = Color.yellow;
+
+        yield return new WaitForSeconds(attackCooldown);
+
+        canAttack = true;
+
+        attackPoint.GetComponent<SpriteRenderer>().color = Color.white;
+    }
 
     #region [ Input ]
 
@@ -94,7 +114,24 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnAttack()
     {
+        if (canAttack)
+        {
+            Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRadius, enemies);
 
+            foreach (Collider2D enemyGameObject in enemy)
+            {
+                if (!enemyGameObject.isTrigger)
+                {
+                    enemyGameObject.gameObject.GetComponent<Enemy>().TakeDamage(1);
+                }
+            }
+
+            StartCoroutine(StartAttackCooldown());
+        }
+        else
+        {
+            int x = 1;
+        }
     }
 
     public void OnInteract()

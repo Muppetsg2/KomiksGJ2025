@@ -859,7 +859,7 @@ GameObject:
   - component: {fileID: 1576281030}
   - component: {fileID: 1576281031}
   - component: {fileID: 1576281032}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -974,6 +974,8 @@ MonoBehaviour:
   isRight: 1
   playerTag: Player
   followTarget: {fileID: 0}
+  currentHealth: 0
+  maxHealth: 1
 --- !u!50 &1576281030
 Rigidbody2D:
   serializedVersion: 5
