@@ -129,9 +129,14 @@ MonoBehaviour:
   fallGravityMult: 2
   attackPoint: {fileID: 4167079131975227833}
   attackRadius: 0.5
-  enemies:
+  enemiesLayer:
     serializedVersion: 2
     m_Bits: 128
+  signsLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  canAttack: 1
+  attackCooldown: 2
   rb: {fileID: 2035814513951364769}
 --- !u!114 &5192656600067905447
 MonoBehaviour:

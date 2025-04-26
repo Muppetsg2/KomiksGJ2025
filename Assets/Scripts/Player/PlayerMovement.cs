@@ -20,7 +20,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Attack")]
     public GameObject attackPoint;
     public float attackRadius = 0.5f;
-    public LayerMask enemies;
+    public LayerMask enemiesLayer;
+    public LayerMask signsLayer;
     public bool canAttack = true;
     public float attackCooldown = 2f;
 
@@ -116,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canAttack)
         {
-            Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRadius, enemies);
+            Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRadius, enemiesLayer);
 
             foreach (Collider2D enemyGameObject in enemy)
             {
@@ -124,6 +125,13 @@ public class PlayerMovement : MonoBehaviour
                 {
                     enemyGameObject.gameObject.GetComponent<Enemy>().TakeDamage(1);
                 }
+            }
+
+            Collider2D[] signs = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRadius, signsLayer);
+
+            foreach (Collider2D signGameObject in signs)
+            {
+                signGameObject.gameObject.GetComponent<SignManager>().Ruin();
             }
 
             StartCoroutine(StartAttackCooldown());
