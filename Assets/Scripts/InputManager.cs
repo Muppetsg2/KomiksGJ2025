@@ -30,6 +30,18 @@ public class InputManager : MonoBehaviour
 
     public static InputManager Instance { get { return instance; } }
 
+    public void EnablePlayer()
+    {
+        PlayerInput pi = GetComponent<PlayerInput>();
+        pi.ActivateInput();
+    }
+
+    public void DisablePlayer()
+    {
+        PlayerInput pi = GetComponent<PlayerInput>();
+        pi.DeactivateInput();
+    }
+
     public void Interact(InputAction.CallbackContext context)
     {
         if (context.performed)

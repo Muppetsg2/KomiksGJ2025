@@ -321,7 +321,7 @@ GameObject:
   - component: {fileID: 5928404857631993767}
   - component: {fileID: 718357445362723949}
   - component: {fileID: 4768459419806075228}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -526,6 +526,7 @@ MonoBehaviour:
   flipY: 0
   ruinable: 1
   flipped: 0
+  ruined: 0
   showInteraction: 0
 --- !u!61 &1313638031917909505
 BoxCollider2D:

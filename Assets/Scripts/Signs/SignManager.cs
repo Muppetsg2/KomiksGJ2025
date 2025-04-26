@@ -17,10 +17,23 @@ public class SignManager : MonoBehaviour
     public bool ruinable = false;
 
     public bool flipped = false;
+    public bool ruined = false;
     public bool showInteraction = false;
 
     public event SignFlippedEventHandler OnFlip;
     public event SignRuinedEventHandler OnRuined;
+
+    private void OnValidate()
+    {
+        if (flipX)
+        {
+            toFlip.flipX = flipped;
+        }
+        if (flipY)
+        {
+            toFlip.flipY = flipped;
+        }
+    }
 
     private void Start()
     {
@@ -42,7 +55,7 @@ public class SignManager : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag(playerTag) && !showInteraction)
+        if (collision.gameObject.CompareTag(playerTag) && !showInteraction && !ruined)
         {
             showInteraction = !showInteraction;
             interactionObj.SetActive(showInteraction);
@@ -51,7 +64,7 @@ public class SignManager : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag(playerTag) && showInteraction)
+        if (collision.gameObject.CompareTag(playerTag) && showInteraction && !ruined)
         {
             showInteraction = !showInteraction;
             interactionObj.SetActive(showInteraction);
@@ -62,7 +75,13 @@ public class SignManager : MonoBehaviour
     {
         if (!ruinable) return false;
 
-        toFlip.GetComponent<Rigidbody2D>().simulated = true;
+        ruined = true;
+        showInteraction = false;
+        interactionObj.SetActive(showInteraction);
+
+        Rigidbody2D rb = toFlip.GetComponent<Rigidbody2D>();
+        rb.simulated = true;
+        rb.WakeUp();
         foreach (var col in toFlip.GetComponents<Collider2D>())
         {
             col.enabled = true;
@@ -73,7 +92,7 @@ public class SignManager : MonoBehaviour
 
     public void Flip()
     {
-        if (showInteraction)
+        if (showInteraction && !ruined)
         {
             if (flipX)
             {
