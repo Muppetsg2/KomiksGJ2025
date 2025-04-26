@@ -132,8 +132,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnInteract()
     {
-        //PlayerHealth playerHealth = GetComponent<PlayerHealth>();
-        //playerHealth.TakeDamage(1);
     }
 
     #endregion

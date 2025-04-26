@@ -40,6 +40,11 @@ public class PlayerHealth : MonoBehaviour
 
             StartCoroutine(FlashRed());
             StartCoroutine(StartDamageCooldown());
+
+            if (currentHealth <= 0)
+            {
+                //Player death
+            }
         }
     }
 
