@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Level1
   m_EditorClassIdentifier: 
   Name: Level 1
-  SceneName: DialogueSceneTest
-  LevelSprite: {fileID: 7361498936159341154, guid: 8b814f629cbb3f44d87848be61ba208c, type: 3}
+  SceneName: Level1
+  LevelSprite: {fileID: -685442191620676181, guid: 4f4f6284702d6954990b2076aaafa5f5, type: 3}
