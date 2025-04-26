@@ -172,6 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patrol: {fileID: 8590853552447653830}
   rb: {fileID: 2856788559846465233}
+  patrolSpeed: 0
   followSpeed: 3
   isRight: 1
   playerTag: Player
@@ -184,6 +185,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   canAttack: 1
+  canMove: 1
+  prepareToAttackTime: 1
+  attackTime: 1
   attackCooldown: 1
   attackDistance: 2
 --- !u!114 &8590853552447653830
@@ -198,8 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4054b5fafd5871342b43ee3ee09eac4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyRb: {fileID: 2856788559846465233}
-  speed: 3
+  enemy: {fileID: 22535449070465560}
   patrolPoints:
   - {fileID: 3864422475704143375}
   - {fileID: 7478394037331524801}

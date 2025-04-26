@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
 {
-    public Rigidbody2D enemyRb;
-    public float speed;
+    public Enemy enemy;
     public Transform[] patrolPoints;
     public int currentPoint = 0;
     public bool isPatroling = false;
@@ -22,15 +21,16 @@ public class EnemyPatrol : MonoBehaviour
     {
         if (!isPatroling) return;
         if (patrolPoints.Length == 0) return;
+        if (enemy.canMove) return;
 
         Vector2 dir = new Vector2(patrolPoints[currentPoint].position.x - transform.position.x, 0).normalized;
 
-        enemyRb.linearVelocity = dir * speed;
+        enemy.rb.linearVelocity = dir * enemy.patrolSpeed;
     }
 
     private void Update()
     {
-        if (Mathf.Abs(transform.position.x - patrolPoints[currentPoint].position.x) <= 0.01f * speed)
+        if (Mathf.Abs(transform.position.x - patrolPoints[currentPoint].position.x) <= 0.01f * enemy.patrolSpeed)
         {
             currentPoint = (currentPoint + 1) % patrolPoints.Length;
         }
