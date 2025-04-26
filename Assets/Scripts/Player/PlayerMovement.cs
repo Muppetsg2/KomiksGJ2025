@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
 
     public event OnJumpStartedEventHandler OnJumpStarted;
+    private CapsuleCollider2D capsuleCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,8 @@ public class PlayerMovement : MonoBehaviour
         InputManager.Instance.OnAttackPressed += OnAttack;
         InputManager.Instance.OnJumpPressed += OnJump;
         InputManager.Instance.OnMove += OnMove;
+
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
     }
 
     // Update is called once per frame
@@ -42,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
         Gravity();
 
-        isGrounded = Physics2D.CircleCast(transform.position, 1f, Vector2.down, 0.05f);
+        isGrounded = Physics2D.CapsuleCast(capsuleCollider.bounds.center, capsuleCollider.size, CapsuleDirection2D.Vertical, capsuleCollider.transform.rotation.eulerAngles.z, Vector2.down, 0.05f);
     }
 
     private void Gravity()
@@ -96,8 +99,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnInteract()
     {
-        PlayerHealth playerHealth = GetComponent<PlayerHealth>();
-        playerHealth.TakeDamage(1);
+        //PlayerHealth playerHealth = GetComponent<PlayerHealth>();
+        //playerHealth.TakeDamage(1);
     }
 
     #endregion
