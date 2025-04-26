@@ -1,14 +1,24 @@
 using UnityEngine;
 
+public delegate void OnJumpStartedEventHandler();
+
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public bool isFacingRight = false;
-    public float jumpPower = 5f;
+    public float jumpPower = 10f;
     public bool isJumping = false;
     Vector2 movementInput = Vector2.zero;
+    public bool isGrounded = false;
+
+    [Header("Gravity")]
+    public float baseGravity = 1f;
+    public float maxFallSpeed = 5f;
+    public float fallGravityMult = 1.1f;
 
     public Rigidbody2D rb;
+
+    public event OnJumpStartedEventHandler OnJumpStarted;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +39,23 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         rb.linearVelocity = new Vector2(movementInput.x * moveSpeed, rb.linearVelocity.y);
+
+        Gravity();
+
+        isGrounded = Physics2D.CircleCast(transform.position, 1f, Vector2.down, 0.05f);
+    }
+
+    private void Gravity()
+    {
+        if (rb.linearVelocity.y < 0)
+        {
+            rb.gravityScale = baseGravity * fallGravityMult;
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Max(rb.linearVelocity.y, -maxFallSpeed));
+        }
+        else
+        {
+            rb.gravityScale = baseGravity;
+        }
     }
 
     void FlipSprite()
@@ -42,10 +69,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        isJumping = false;
-    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    isJumping = false;
+    //}
 
 
     #region [ Input ]
@@ -54,10 +81,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnJump()
     {
-        if (!isJumping)
+        if (isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
-            isJumping = true;
+            isGrounded = false;
+            OnJumpStarted?.Invoke();
         }
     }
 
