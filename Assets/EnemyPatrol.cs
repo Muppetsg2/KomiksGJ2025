@@ -23,9 +23,16 @@ public class EnemyPatrol : MonoBehaviour
         if (patrolPoints.Length == 0) return;
         if (enemy.canMove) return;
 
-        Vector2 dir = new Vector2(patrolPoints[currentPoint].position.x - transform.position.x, 0).normalized;
+        float dirX = patrolPoints[currentPoint].position.x - transform.position.x;
+        dirX = dirX > 0 ? 1 : (dirX < 0) ? -1 : 0;
 
-        enemy.rb.linearVelocity = dir * enemy.patrolSpeed;
+        float desiredVelocityX = dirX * enemy.patrolSpeed;
+        if (dirX != 0)
+        {
+            enemy.rb.linearVelocityX += dirX * enemy.patrolSpeed * Time.fixedDeltaTime;
+        }
+
+        enemy.rb.linearVelocityX = desiredVelocityX * (1f - enemy.moveSmoothing) + enemy.rb.linearVelocityX * enemy.moveSmoothing;
     }
 
     private void Update()

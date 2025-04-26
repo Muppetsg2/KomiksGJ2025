@@ -79,7 +79,14 @@ public class PlayerMovement : MonoBehaviour
 
         Gravity();
 
+        bool previousGround = isGrounded;
         isGrounded = Physics2D.CapsuleCast(capsuleCollider.bounds.center, capsuleCollider.size, CapsuleDirection2D.Vertical, capsuleCollider.transform.rotation.eulerAngles.z, Vector2.down, 0.05f);
+        animator.SetBool("IsGrounded", isGrounded);
+        if (previousGround != isGrounded)
+        {
+            animator.ResetTrigger("Jump");
+            animator.SetTrigger("Landing");
+        }
     }
 
     private void Gravity()
@@ -134,6 +141,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnMove(Vector2 move)
     {
+        movementInput = move;
         if (move.x != 0)
         {
             animator.ResetTrigger("RunStop");
@@ -144,16 +152,31 @@ public class PlayerMovement : MonoBehaviour
             animator.ResetTrigger("RunStart");
             animator.SetTrigger("RunStop");
         }
-        movementInput = move;
     }
 
     public void OnJump()
     {
         if (isGrounded)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
+            rb.linearVelocityY = jumpPower;
             isGrounded = false;
+            animator.SetBool("IsGrounded", isGrounded);
+            animator.SetBool("Landed", false);
+            animator.ResetTrigger("RunStart");
+            animator.ResetTrigger("RunStop");
+            animator.SetTrigger("Jump");
             OnJumpStarted?.Invoke();
+        }
+    }
+
+    public void OnLanded()
+    {
+        animator.ResetTrigger("Landing");
+        animator.SetBool("Landed", true);
+        if (movementInput.x != 0)
+        {
+            animator.ResetTrigger("RunStop");
+            animator.SetTrigger("RunStart");
         }
     }
 

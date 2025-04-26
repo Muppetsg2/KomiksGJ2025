@@ -119,12 +119,12 @@ TextureImporter:
       name: jump_frame_0002_0
       rect:
         serializedVersion: 2
-        x: 61
-        y: 59
-        width: 125
-        height: 291
+        x: 0
+        y: 0
+        width: 200
+        height: 350
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -137,33 +137,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: jump_frame_0002_1
-      rect:
-        serializedVersion: 2
-        x: 175
-        y: 139
-        width: 7
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f9a4d280de50dae10800000000000000
-      internalID: 2210429507711355551
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b38bd1e50f5b33a4e9868bbcbf9330e6
     internalID: 0
     vertices: []
     indices: 
@@ -172,7 +150,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      jump_frame_0002_0: 1419178340750263368
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

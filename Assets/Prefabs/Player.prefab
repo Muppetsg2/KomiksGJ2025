@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  moveSmooting: 0.5
   isFacingRight: 0
   jumpPower: 10
   isJumping: 0
@@ -135,7 +136,7 @@ MonoBehaviour:
     m_Bits: 128
   signsLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   canAttack: 1
   attackCooldown: 2
   signKnockbackForce: 30

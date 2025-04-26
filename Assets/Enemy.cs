@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     public Rigidbody2D rb;
     public float patrolSpeed;
     public float followSpeed;
+    public float moveSmoothing = 0.5f;
     public bool isRight = true;
 
     [TagField]
@@ -44,6 +45,17 @@ public class Enemy : MonoBehaviour
                 Vector2 dir = new Vector2(followTarget.transform.position.x - transform.position.x, 0).normalized;
 
                 rb.linearVelocity = dir * followSpeed + new Vector2(0, rb.linearVelocityY);
+
+                float dirX = followTarget.transform.position.x - transform.position.x;
+                dirX = dirX > 0 ? 1 : (dirX < 0) ? -1 : 0;
+
+                float desiredVelocityX = dirX * followSpeed;
+                if (dirX != 0)
+                {
+                    rb.linearVelocityX += dirX * followSpeed * Time.fixedDeltaTime;
+                }
+
+                rb.linearVelocityX = desiredVelocityX * (1f - moveSmoothing) + rb.linearVelocityX * moveSmoothing;
             }
 
             TryToAttack();
