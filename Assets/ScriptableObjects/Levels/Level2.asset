@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16498d39edc1924498efe19c57e0bee5, type: 3}
-  m_Name: Level1
+  m_Name: Level2
   m_EditorClassIdentifier: 
-  Name: Level 1
-  SceneName: Level1
-  LevelSprite: {fileID: -685442191620676181, guid: 4f4f6284702d6954990b2076aaafa5f5, type: 3}
+  Name: Level 2
+  SceneName: Level2
+  LevelSprite: {fileID: -5567032785157869094, guid: eb4326e9250c7d14cab3cbd764b0e8c2, type: 3}
