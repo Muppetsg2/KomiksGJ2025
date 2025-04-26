@@ -1,11 +1,11 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Enemy : MonoBehaviour
 {
     public EnemyPatrol patrol;
     public Rigidbody2D rb;
+    public float patrolSpeed;
     public float followSpeed;
     public bool isRight = true;
 
@@ -23,6 +23,9 @@ public class Enemy : MonoBehaviour
     public float attackRadius = 0.5f;
     public LayerMask playerLayer;
     public bool canAttack = true;
+    public bool canMove = true;
+    public float prepareToAttackTime = 1f;
+    public float attackTime = 1f;
     public float attackCooldown = 1f;
     public float attackDistance = 2f;
 
@@ -36,9 +39,12 @@ public class Enemy : MonoBehaviour
     {
         if (followTarget != null)
         {
-            Vector2 dir = new Vector2(followTarget.transform.position.x - transform.position.x, 0).normalized;
+            if (canMove)
+            {
+                Vector2 dir = new Vector2(followTarget.transform.position.x - transform.position.x, 0).normalized;
 
-            rb.linearVelocity = dir * followSpeed;
+                rb.linearVelocity = dir * followSpeed + new Vector2(0, rb.linearVelocityY);
+            }
 
             TryToAttack();
         }
@@ -91,19 +97,28 @@ public class Enemy : MonoBehaviour
 
             if (distance < attackDistance)
             {
-                Attack();
+                StartCoroutine(Attack());
             }
         }
     }
 
-    public void Attack()
+    public IEnumerator Attack()
     {
+        canMove = false;
+        rb.linearVelocityX = 0;
+
+        yield return new WaitForSeconds(prepareToAttackTime);
+
         Collider2D[] player = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRadius, playerLayer);
 
         foreach (Collider2D playerGameObject in player)
         {
             playerGameObject.gameObject.GetComponent<PlayerHealth>().TakeDamage(1);
         }
+
+        yield return new WaitForSeconds(attackTime);
+
+        canMove = true;
 
         StartCoroutine(StartAttackCooldown());
     }

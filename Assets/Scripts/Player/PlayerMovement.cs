@@ -20,9 +20,17 @@ public class PlayerMovement : MonoBehaviour
     [Header("Attack")]
     public GameObject attackPoint;
     public float attackRadius = 0.5f;
-    public LayerMask enemies;
+    public LayerMask enemiesLayer;
+    public LayerMask signsLayer;
     public bool canAttack = true;
     public float attackCooldown = 2f;
+
+    [Header("Knockback")]
+    public float signKnockbackForce = 10f;
+    public float knockback = 0f;
+    public float knockbackSmoothTime = 1f;
+    private float knockbackVelocity = 0;
+    private float epsilon = 5f;
 
     public Rigidbody2D rb;
 
@@ -49,7 +57,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(movementInput.x * moveSpeed, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(movementInput.x * moveSpeed + knockback, rb.linearVelocity.y);
+
+        if (Mathf.Abs(knockback) > 0)
+        {
+            knockback = Mathf.SmoothDamp(knockback, 0f, ref knockbackVelocity, knockbackSmoothTime);
+            if (Mathf.Abs(knockback) < epsilon)
+            {
+                knockback = 0f;
+            }
+        }
 
         Gravity();
 
@@ -98,6 +115,12 @@ public class PlayerMovement : MonoBehaviour
         attackPoint.GetComponent<SpriteRenderer>().color = Color.white;
     }
 
+    public void Knockback(Transform source, float knockbackForce)
+    {
+        Vector2 direction = new Vector2(transform.position.x - source.position.x, 0).normalized;
+        knockback = direction.x * knockbackForce;
+    }
+
     #region [ Input ]
 
     public void OnMove(Vector2 move) => movementInput = move;
@@ -116,13 +139,23 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canAttack)
         {
-            Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRadius, enemies);
+            Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRadius, enemiesLayer);
 
             foreach (Collider2D enemyGameObject in enemy)
             {
                 if (!enemyGameObject.isTrigger)
                 {
                     enemyGameObject.gameObject.GetComponent<Enemy>().TakeDamage(1);
+                }
+            }
+
+            Collider2D[] signs = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRadius, signsLayer);
+
+            foreach (Collider2D signGameObject in signs)
+            {
+                if(!signGameObject.gameObject.GetComponent<SignManager>().Ruin())
+                {
+                    Knockback(signGameObject.gameObject.transform, signKnockbackForce);
                 }
             }
 

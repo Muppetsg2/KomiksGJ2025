@@ -472,7 +472,7 @@ GameObject:
   - component: {fileID: 2318253124130488386}
   - component: {fileID: 6328322703570830617}
   - component: {fileID: 1313638031917909505}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SimpleSign
   m_TagString: Untagged
   m_Icon: {fileID: 0}

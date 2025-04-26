@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StairSign Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5535500194319607317, guid: 8cb13f5fbcd87e24885a9f4ce384c1be, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5928404857631993767, guid: 8cb13f5fbcd87e24885a9f4ce384c1be, type: 3}
       propertyPath: m_FlipX
       value: 1
