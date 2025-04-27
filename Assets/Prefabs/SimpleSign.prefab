@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 7047997713058401669, guid: 2e226a0ce4b35e540adfe8017b7ab825, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -234,7 +234,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!114 &4553258796489646966
 MonoBehaviour:
@@ -728,7 +728,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press 'E' or 'rightclick' to flip sign
+  m_text: Press 'E' or 'RMB' to flip sign
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 61f0738ee3e65d04d8846f90c8764b84, type: 2}
   m_sharedMaterial: {fileID: 7706930115593379146, guid: 61f0738ee3e65d04d8846f90c8764b84, type: 2}
