@@ -664,6 +664,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -48.507343
       objectReference: {fileID: 0}
+    - target: {fileID: 5789404819554846024, guid: f03485e0cf0bbce4a827e3af3e0fb4bf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1682375051}
+    - target: {fileID: 5789404819554846024, guid: f03485e0cf0bbce4a827e3af3e0fb4bf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Menu
+      objectReference: {fileID: 0}
     - target: {fileID: 6322238390265832600, guid: f03485e0cf0bbce4a827e3af3e0fb4bf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -692,6 +700,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -304.18234
       objectReference: {fileID: 0}
+    - target: {fileID: 8070004450630490248, guid: f03485e0cf0bbce4a827e3af3e0fb4bf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1682375051}
+    - target: {fileID: 8070004450630490248, guid: f03485e0cf0bbce4a827e3af3e0fb4bf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Exit
+      objectReference: {fileID: 0}
     - target: {fileID: 8088452389144044672, guid: f03485e0cf0bbce4a827e3af3e0fb4bf, type: 3}
       propertyPath: m_Name
       value: PauseCanvas
@@ -699,6 +715,14 @@ PrefabInstance:
     - target: {fileID: 8088452389144044672, guid: f03485e0cf0bbce4a827e3af3e0fb4bf, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8709646142050396744, guid: f03485e0cf0bbce4a827e3af3e0fb4bf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1682375051}
+    - target: {fileID: 8709646142050396744, guid: f03485e0cf0bbce4a827e3af3e0fb4bf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartLevel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
