@@ -1,5 +1,6 @@
 using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public delegate void SignFlippedEventHandler(bool flipped);
 public delegate void SignRuinedEventHandler();
@@ -10,6 +11,8 @@ public class SignManager : MonoBehaviour
     [TagField]
     public string playerTag;
     public GameObject interactionObj;
+
+    public AudioSource audioSource;
 
     public SpriteRenderer toFlip;
     public bool flipX = false;
@@ -61,6 +64,7 @@ public class SignManager : MonoBehaviour
 
     public bool Ruin()
     {
+        audioSource.Play();
         if (!ruinable) return false;
 
         ruined = true;

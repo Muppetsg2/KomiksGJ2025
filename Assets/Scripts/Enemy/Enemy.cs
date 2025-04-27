@@ -14,6 +14,9 @@ public class Enemy : MonoBehaviour
     public float moveSmoothing = 0.5f;
     public bool isRight = true;
 
+    public AudioSource footstepsAudioSource;
+    public AudioSource attackAudioSource;
+
     [TagField]
     public string playerTag;
 
@@ -101,6 +104,15 @@ public class Enemy : MonoBehaviour
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
             isRight = false;
         }
+
+        if (!footstepsAudioSource.isPlaying && rb.linearVelocityX != 0)
+        {
+            footstepsAudioSource.Play();
+        }
+        else if (footstepsAudioSource.isPlaying && rb.linearVelocityX == 0)
+        {
+            footstepsAudioSource.Stop();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -136,6 +148,7 @@ public class Enemy : MonoBehaviour
     {
         if (canAttack)
         {
+            attackAudioSource.Play();
             canAttack = false;
             StartCoroutine(StartAttackCooldown());
 

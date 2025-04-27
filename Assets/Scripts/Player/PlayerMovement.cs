@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public delegate void OnJumpStartedEventHandler();
 
@@ -12,6 +13,9 @@ public class PlayerMovement : MonoBehaviour
     public bool isJumping = false;
     Vector2 movementInput = Vector2.zero;
     public bool isGrounded = false;
+
+    public AudioSource footstepsAudioSource;
+    public AudioSource kickAudioSource;
 
     [Header("Gravity")]
     public float baseGravity = 1f;
@@ -101,6 +105,18 @@ public class PlayerMovement : MonoBehaviour
             animator.ResetTrigger("Jump");
             animator.SetTrigger("Landing");
         }
+
+        if (isGrounded && animator.GetBool("Landed"))
+        {
+            if (!footstepsAudioSource.isPlaying && movementInput.x != 0)
+            {
+                footstepsAudioSource.Play();
+            }
+            else if (footstepsAudioSource.isPlaying && movementInput.x == 0)
+            {
+                footstepsAudioSource.Stop();
+            }
+        }
     }
 
     private void Gravity()
@@ -140,6 +156,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Attack()
     {
+        kickAudioSource.Play();
+
         Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRadius, enemiesLayer);
 
         foreach (Collider2D enemyGameObject in enemy)
