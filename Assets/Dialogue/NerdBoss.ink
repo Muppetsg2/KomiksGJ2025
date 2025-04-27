@@ -55,7 +55,7 @@ It can't be!!! You're correct... #speaker:0 #portrait:surprised #layout:right
 -> question_3
 
 === question_3 ===
-But now for my final question, the most #speaker:0 #portrait:happy #layout:right diffucult one!
+But now for my final question, the most diffucult one! #speaker:0 #portrait:happy #layout:right
 ... #portrait:neutral
 WHAT CLASS AM I PLAYING IN DUNGEONS AND DRAGONS?! #portrait:happy
 + Rogue #speaker:1 #layout:left #portrait:neutral
