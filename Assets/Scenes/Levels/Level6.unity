@@ -2207,7 +2207,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 142545628993379358, guid: 08ea78ea3ee3bfc44ae891302384dff8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 63.918762
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 142545628993379358, guid: 08ea78ea3ee3bfc44ae891302384dff8, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2227,7 +2227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3382348670880632520, guid: 08ea78ea3ee3bfc44ae891302384dff8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -63.918747
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3382348670880632520, guid: 08ea78ea3ee3bfc44ae891302384dff8, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -5265,8 +5265,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Nerd
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 61f0738ee3e65d04d8846f90c8764b84, type: 2}
+  m_sharedMaterial: {fileID: 7706930115593379146, guid: 61f0738ee3e65d04d8846f90c8764b84, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7293,10 +7293,6 @@ PrefabInstance:
     - target: {fileID: 2331432994391058940, guid: d56b67abddd20324c9db2d04809d43d6, type: 3}
       propertyPath: m_Name
       value: DialoguePanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 2331432994391058940, guid: d56b67abddd20324c9db2d04809d43d6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
