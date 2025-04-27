@@ -55,7 +55,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 29, y: 23, z: 31, w: 18}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -119,10 +119,10 @@ TextureImporter:
       name: option_box_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 0
-        width: 396
-        height: 100
+        x: 3
+        y: 3
+        width: 393
+        height: 95
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 12, y: 14, z: 13, w: 12}
