@@ -4,9 +4,9 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(BoxCollider2D))]
 public class EndManager : MonoBehaviour
 {
-    private EndManager instance;
+    private static EndManager instance;
 
-    public EndManager Instance {  get { return instance; } }
+    public static EndManager Instance {  get { return instance; } }
 
     [SerializeField] private GameObject endFinishedCanvas;
     [SerializeField] private GameObject endDeathCanvas;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -37,6 +38,11 @@ public class NerdBoss : MonoBehaviour
         target = GameObject.FindGameObjectWithTag(playerTag);
         healthUI.gameObject.SetActive(false);
         nerdText.SetActive(false);
+
+        if (DialogueManager.Instance != null)
+        {
+            DialogueManager.Instance.OnDialogueEnd += OnDialogueEnd;
+        }
     }
 
     private void Update()
@@ -95,10 +101,32 @@ public class NerdBoss : MonoBehaviour
 
         // Shoot
         Vector2 direction = (target.transform.position - transform.position).normalized;
-        GameObject projectile = Instantiate(signProjectiles[Random.Range(0, signProjectiles.Length)], transform.position, Quaternion.identity);
+        GameObject projectile = Instantiate(signProjectiles[UnityEngine.Random.Range(0, signProjectiles.Length)], transform.position, Quaternion.identity);
         projectile.GetComponent<Projectile>().SetVelocity(direction * projectileSpeed);
 
         StartCoroutine(AttackCooldown());
+    }
+
+    public void OnDialogueEnd()
+    {
+        int value = DialogueManager.Instance.GoodAnswers;
+
+        if (value < maxHealth)
+        {
+            StartBattle();
+            TakeDamage(value);
+        }
+        else
+        {
+            battleStarted = true;
+            canMove = false;
+            canAttack = false;
+            currentPoint = 0;
+            rb.linearVelocity = Vector2.zero;
+            healthUI.SetMaxHearts(maxHealth);
+            healthUI.UpdateHearts(currentHealth);
+            TakeDamage(value);
+        }
     }
 
     public void StartBattle()
@@ -138,11 +166,12 @@ public class NerdBoss : MonoBehaviour
             // DEFEATED
             Debug.Log("DEFEATED");
             defeated = true;
+            EndManager.Instance.OpenWinScreen();
         }
         else
         {
             canMove = true;
-            int newPoint = Random.Range(0, movePoints.Length - 1);
+            int newPoint = UnityEngine.Random.Range(0, movePoints.Length - 1);
             currentPoint = newPoint == currentPoint ? ((currentPoint + 1) % movePoints.Length) : newPoint;
 
             animator.ResetTrigger("FlyEnd");
