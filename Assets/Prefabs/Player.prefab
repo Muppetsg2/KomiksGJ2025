@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.18210658, y: 0.5573433, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5046732069543075634}
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   moveSmooting: 0.5
-  isFacingRight: 0
+  isFacingRight: 1
   jumpPower: 10
   isJumping: 0
   isGrounded: 0
@@ -140,11 +140,15 @@ MonoBehaviour:
   nerdsLayer:
     serializedVersion: 2
     m_Bits: 512
+  spawnersLayer:
+    serializedVersion: 2
+    m_Bits: 2048
   canAttack: 1
   attackCooldown: 1
   signKnockbackForce: 10
   knockback: 0
   knockbackSmoothTime: 0.2
+  stuntCooldown: 2
   rb: {fileID: 2035814513951364769}
   animator: {fileID: 5395945663016044593}
 --- !u!114 &5192656600067905447
@@ -278,7 +282,7 @@ Transform:
   m_GameObject: {fileID: 4167079131975227833}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.4, y: 0, z: 0}
+  m_LocalPosition: {x: -1.4, y: 0.947, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask enemiesLayer;
     public LayerMask signsLayer;
     public LayerMask nerdsLayer;
+    public LayerMask spawnersLayer;
     public bool canAttack = true;
     public float attackCooldown = 2f;
 
@@ -164,6 +165,13 @@ public class PlayerMovement : MonoBehaviour
         foreach (Collider2D nerdsGameObject in nerds)
         {
             nerdsGameObject.gameObject.GetComponent<NerdBoss>().TakeDamage(1);
+        }
+
+        Collider2D[] spawners = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRadius, spawnersLayer);
+
+        foreach (Collider2D spawnerGameObject in spawners)
+        {
+            spawnerGameObject.gameObject.GetComponent<EnemySpawner>().Close();
         }
 
         attackPoint.GetComponent<SpriteRenderer>().color = Color.yellow;

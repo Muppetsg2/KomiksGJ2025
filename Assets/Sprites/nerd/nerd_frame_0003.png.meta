@@ -1,16 +1,13 @@
 fileFormatVersion: 2
-guid: 7dd27af6aaff5b3468031344def6173c
+guid: 3a053701d687c1149a520ffc7d2e9b1f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2717030580290399356
-    second: door_SCHOOL_0
+      213: 4577346196753994585
+    second: nerd_frame_0003_0
   - first:
-      213: 755313054376164917
-    second: door_SCHOOL_1
-  - first:
-      213: 8508742653812085864
-    second: door_SCHOOL_2
+      213: -489687333636512053
+    second: nerd_frame_0003_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -119,45 +116,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: door_SCHOOL_0
+      name: nerd_frame_0003_0
       rect:
         serializedVersion: 2
-        x: 40
-        y: 3
-        width: 394
-        height: 414
+        x: 0
+        y: 189
+        width: 19
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c7c2516dae4d4b520800000000000000
-      internalID: 2717030580290399356
+      spriteID: 953d1873d10068f30800000000000000
+      internalID: 4577346196753994585
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: door_SCHOOL_1
+      name: nerd_frame_0003_1
       rect:
         serializedVersion: 2
-        x: 78
-        y: 415
-        width: 243
-        height: 85
+        x: 2
+        y: 0
+        width: 198
+        height: 350
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 53e7e4c98396b7a00800000000000000
-      internalID: 755313054376164917
+      spriteID: bc6669be6f74439f0800000000000000
+      internalID: -489687333636512053
       vertices: []
       indices: 
       edges: []
@@ -166,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -176,9 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      door_SCHOOL_0: 2717030580290399356
-      door_SCHOOL_1: 755313054376164917
-      door_SCHOOL_2: 8508742653812085864
+      nerd_frame_0003_0: 4577346196753994585
+      nerd_frame_0003_1: -489687333636512053
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
