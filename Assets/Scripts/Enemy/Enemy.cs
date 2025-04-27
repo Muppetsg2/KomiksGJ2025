@@ -5,6 +5,7 @@ public class Enemy : MonoBehaviour
 {
     public EnemyPatrol patrol;
     public Rigidbody2D rb;
+    public Animator animator;
     public float patrolSpeed;
     public float followSpeed;
     public float moveSmoothing = 0.5f;
@@ -25,8 +26,6 @@ public class Enemy : MonoBehaviour
     public LayerMask playerLayer;
     public bool canAttack = true;
     public bool canMove = true;
-    public float prepareToAttackTime = 1f;
-    public float attackTime = 1f;
     public float attackCooldown = 1f;
     public float attackDistance = 2f;
 
@@ -40,25 +39,49 @@ public class Enemy : MonoBehaviour
     {
         if (followTarget != null)
         {
+            float distance = Vector2.Distance(followTarget.transform.position, gameObject.transform.position);
+
+            if (distance < attackDistance)
+            {
+                canMove = false;
+                PlayAttack();
+            }
+            else
+            {
+                canMove = true;
+            }
+
+            float lastVelo = rb.linearVelocityX;
+
+            float desiredVelocityX = 0;
+
             if (canMove)
             {
-                Vector2 dir = new Vector2(followTarget.transform.position.x - transform.position.x, 0).normalized;
-
-                rb.linearVelocity = dir * followSpeed + new Vector2(0, rb.linearVelocityY);
-
                 float dirX = followTarget.transform.position.x - transform.position.x;
                 dirX = dirX > 0 ? 1 : (dirX < 0) ? -1 : 0;
 
-                float desiredVelocityX = dirX * followSpeed;
+                desiredVelocityX = dirX * followSpeed;
                 if (dirX != 0)
                 {
                     rb.linearVelocityX += dirX * followSpeed * Time.fixedDeltaTime;
                 }
-
-                rb.linearVelocityX = desiredVelocityX * (1f - moveSmoothing) + rb.linearVelocityX * moveSmoothing;
             }
 
-            TryToAttack();
+            rb.linearVelocityX = desiredVelocityX * (1f - moveSmoothing) + rb.linearVelocityX * moveSmoothing;
+
+            if (lastVelo != rb.linearVelocityX)
+            {
+                if (lastVelo == 0)
+                {
+                    animator.ResetTrigger("RunStop");
+                    animator.SetTrigger("RunStart");
+                }
+                else if (rb.linearVelocityX == 0)
+                {
+                    animator.ResetTrigger("RunStart");
+                    animator.SetTrigger("RunStop");
+                }
+            }
         }
 
         if (rb.linearVelocityX > 0 && !isRight)
@@ -101,44 +124,40 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void TryToAttack()
+    private void PlayAttack()
     {
         if (canAttack)
         {
-            float distance = Vector2.Distance(followTarget.transform.position, gameObject.transform.position);
+            canAttack = false;
 
-            if (distance < attackDistance)
-            {
-                StartCoroutine(Attack());
-            }
+            animator.ResetTrigger("RunStart");
+            animator.SetTrigger("RunStop");
+            animator.SetTrigger("Attack");
         }
     }
 
-    public IEnumerator Attack()
+    public void Attack()
     {
-        canMove = false;
-        rb.linearVelocityX = 0;
-
-        yield return new WaitForSeconds(prepareToAttackTime);
-
         Collider2D[] player = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRadius, playerLayer);
 
         foreach (Collider2D playerGameObject in player)
         {
             playerGameObject.gameObject.GetComponent<PlayerHealth>().TakeDamage(1);
         }
+    }
 
-        yield return new WaitForSeconds(attackTime);
-
+    public void AttackEnd()
+    {
         canMove = true;
+
+        animator.ResetTrigger("RunStop");
+        animator.ResetTrigger("Attack");
 
         StartCoroutine(StartAttackCooldown());
     }
 
     public IEnumerator StartAttackCooldown()
     {
-        canAttack = false;
-
         attackPoint.GetComponent<SpriteRenderer>().color = Color.yellow;
 
         yield return new WaitForSeconds(attackCooldown);

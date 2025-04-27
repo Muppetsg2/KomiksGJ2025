@@ -116,12 +116,12 @@ TextureImporter:
       name: enemy_walk_0005_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 2
-        width: 166
-        height: 347
+        x: 0
+        y: 0
+        width: 200
+        height: 350
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f57881dc6c315bb468a9c62b446e3041
     internalID: 0
     vertices: []
     indices: 
