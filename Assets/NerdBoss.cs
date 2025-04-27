@@ -25,6 +25,7 @@ public class NerdBoss : MonoBehaviour
     public float projectileSpeed = 3;
 
     public bool battleStarted = false;
+    public bool defeated = false;
 
     public HealthUI healthUI;
     public GameObject nerdText;
@@ -41,6 +42,7 @@ public class NerdBoss : MonoBehaviour
 
     private void Update()
     {
+        if (defeated) return;
         if (!battleStarted) return;
 
         if (Vector2.Distance(transform.position, movePoints[currentPoint].position) <= 0.01f * moveSpeed)
@@ -48,10 +50,13 @@ public class NerdBoss : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
             canMove = false;
         }
+
+        Attack();
     }
 
     private void FixedUpdate()
     {
+        if (defeated) return;
         if (!battleStarted) return;
         if (!canMove) return;
         if (movePoints.Length == 0) return;
@@ -70,11 +75,13 @@ public class NerdBoss : MonoBehaviour
     public void Attack()
     {
         if (!battleStarted) return;
+        if (!canAttack) return;
+        if (canMove) return;
 
         canAttack = false;
 
         // Shoot
-        Vector2 direction = target.transform.position - transform.position;
+        Vector2 direction = (target.transform.position - transform.position).normalized;
         GameObject projectile = Instantiate(signProjectiles[Random.Range(0, signProjectiles.Length)], transform.position, Quaternion.identity);
         projectile.GetComponent<Projectile>().SetVelocity(direction * projectileSpeed);
 
@@ -90,6 +97,9 @@ public class NerdBoss : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         healthUI.gameObject.SetActive(true);
         nerdText.SetActive(true);
+
+        healthUI.SetMaxHearts(maxHealth);
+        healthUI.UpdateHearts(currentHealth);
     }
 
     public void TakeDamage(int damage)
@@ -97,10 +107,12 @@ public class NerdBoss : MonoBehaviour
         if (!battleStarted) return;
 
         currentHealth -= damage;
+        healthUI.UpdateHearts(currentHealth);
         if (currentHealth <= 0)
         {
             // DEFEATED
             Debug.Log("DEFEATED");
+            defeated = true;
         }
         else
         {
@@ -119,6 +131,7 @@ public class NerdBoss : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (defeated) return;
         if (!battleStarted) return;
 
         if (((1 << collision.gameObject.layer) & signLayer.value) != 0)
