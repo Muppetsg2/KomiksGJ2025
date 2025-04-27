@@ -116,12 +116,12 @@ TextureImporter:
       name: nerd_frame_0002_0
       rect:
         serializedVersion: 2
-        x: 2
+        x: 0
         y: 0
-        width: 198
-        height: 349
+        width: 200
+        height: 350
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 81034a9369575a9449e6b7afa1a0891c
     internalID: 0
     vertices: []
     indices: 
