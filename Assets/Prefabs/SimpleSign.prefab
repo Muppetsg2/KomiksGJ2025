@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1748150238895145886}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.016, y: 0.634, z: 0}
+  m_LocalPosition: {x: 0.016, y: 1.234, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -730,8 +730,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press 'E' or 'rightclick' to flip sign
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 61f0738ee3e65d04d8846f90c8764b84, type: 2}
+  m_sharedMaterial: {fileID: 7706930115593379146, guid: 61f0738ee3e65d04d8846f90c8764b84, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

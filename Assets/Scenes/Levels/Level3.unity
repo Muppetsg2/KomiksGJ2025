@@ -151,12 +151,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 798847147}
-  m_Father: {fileID: 87604655}
+  m_Father: {fileID: 1847382570}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -1.0099999, y: 6.95}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_AnchoredPosition: {x: 4.73, y: 3.66}
+  m_SizeDelta: {x: 1855.707, y: 1961.7275}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &18329275
 MonoBehaviour:
@@ -496,11 +496,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &87604655 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8670156103035597039, guid: 5e00ed372449ab4408775024100a6fa0, type: 3}
-  m_PrefabInstance: {fileID: 1847382569}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &99432056
 GameObject:
   m_ObjectHideFlags: 0
@@ -1653,13 +1648,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You can also press ''leftclick'' to destroy a sign.
+  m_text: 'You can also press ''LMB'' to destroy a sign.
 
-    But be careful
-    only some signs are destroyable!'
+    But be careful only
+    some signs are destroyable!'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 61f0738ee3e65d04d8846f90c8764b84, type: 2}
+  m_sharedMaterial: {fileID: 7706930115593379146, guid: 61f0738ee3e65d04d8846f90c8764b84, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1721,7 +1716,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -886.8, y: -23.281067, z: -959.8341, w: 23.079407}
+  m_margin: {x: 4.112671, y: -23.281067, z: -13.814455, w: 23.079407}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2830,8 +2825,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 8670156103035597039, guid: 5e00ed372449ab4408775024100a6fa0, type: 3}
-      insertIndex: -1
+    - targetCorrespondingSourceObject: {fileID: 4043177726269446045, guid: 5e00ed372449ab4408775024100a6fa0, type: 3}
+      insertIndex: 0
       addedObject: {fileID: 18329274}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e00ed372449ab4408775024100a6fa0, type: 3}

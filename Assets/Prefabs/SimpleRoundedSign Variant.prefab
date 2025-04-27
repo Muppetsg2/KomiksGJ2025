@@ -421,6 +421,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1202695210902600944, guid: 8cb13f5fbcd87e24885a9f4ce384c1be, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.032
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202695210902600944, guid: 8cb13f5fbcd87e24885a9f4ce384c1be, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.209
+      objectReference: {fileID: 0}
     - target: {fileID: 1313638031917909505, guid: 8cb13f5fbcd87e24885a9f4ce384c1be, type: 3}
       propertyPath: m_Size.y
       value: 5.736991
@@ -428,6 +436,14 @@ PrefabInstance:
     - target: {fileID: 1313638031917909505, guid: 8cb13f5fbcd87e24885a9f4ce384c1be, type: 3}
       propertyPath: m_Offset.y
       value: 1.3284955
+      objectReference: {fileID: 0}
+    - target: {fileID: 1424871512140638456, guid: 8cb13f5fbcd87e24885a9f4ce384c1be, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1309.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 1424871512140638456, guid: 8cb13f5fbcd87e24885a9f4ce384c1be, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.1272
       objectReference: {fileID: 0}
     - target: {fileID: 2318253124130488386, guid: 8cb13f5fbcd87e24885a9f4ce384c1be, type: 3}
       propertyPath: m_LocalPosition.x
@@ -493,6 +509,18 @@ PrefabInstance:
       propertyPath: toFlip
       value: 
       objectReference: {fileID: 8665621304981090488}
+    - target: {fileID: 6563144991640663067, guid: 8cb13f5fbcd87e24885a9f4ce384c1be, type: 3}
+      propertyPath: m_text
+      value: Press 'E' or 'RMB' to flip sign
+      objectReference: {fileID: 0}
+    - target: {fileID: 6563144991640663067, guid: 8cb13f5fbcd87e24885a9f4ce384c1be, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 61f0738ee3e65d04d8846f90c8764b84, type: 2}
+    - target: {fileID: 6563144991640663067, guid: 8cb13f5fbcd87e24885a9f4ce384c1be, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7706930115593379146, guid: 61f0738ee3e65d04d8846f90c8764b84, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 1822920053319450528, guid: 8cb13f5fbcd87e24885a9f4ce384c1be, type: 3}

@@ -168,7 +168,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1362932536854350224
 RectTransform:
   m_ObjectHideFlags: 0
@@ -318,7 +318,6 @@ GameObject:
   - component: {fileID: 8592907370684517247}
   - component: {fileID: 2711527835432209825}
   - component: {fileID: 4841085117400396074}
-  - component: {fileID: 8204320522216679892}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -383,21 +382,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8204320522216679892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4425962831981882643}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0.02641511, g: 0.02641511, b: 0.02641511, a: 1}
-  m_EffectDistance: {x: 11, y: -11}
-  m_UseGraphicAlpha: 1
 --- !u!1 &4433158087969572806
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,7 +1270,6 @@ GameObject:
   - component: {fileID: 2328132974615133331}
   - component: {fileID: 7288301187124678180}
   - component: {fileID: 5984707818021560475}
-  - component: {fileID: 1530884405024049452}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -1351,18 +1334,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1530884405024049452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8092132718409050232}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0.05660379, g: 0.05660379, b: 0.05660379, a: 1}
-  m_EffectDistance: {x: 11, y: -11}
-  m_UseGraphicAlpha: 1

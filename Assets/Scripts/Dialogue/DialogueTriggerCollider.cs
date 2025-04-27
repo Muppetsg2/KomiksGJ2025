@@ -19,6 +19,7 @@ public class DialogueTriggerCollider : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            GetComponent<BoxCollider2D>().enabled = false;
             InputManager.Instance.DisablePlayerMap();
             InputManager.Instance.EnableDialogMap();
             StartClicked();
