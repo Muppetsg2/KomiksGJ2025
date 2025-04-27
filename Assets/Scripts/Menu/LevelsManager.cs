@@ -16,7 +16,7 @@ public class LevelsManager : MonoBehaviour
             string sName = level.SceneName;
             GameObject obj = Instantiate(levelPrefab, spawnPoint, false);
             obj.GetComponentInChildren<Image>().sprite = level.LevelSprite;
-            obj.GetComponentInChildren<TextMeshProUGUI>().text = level.name;
+            obj.GetComponentInChildren<TextMeshProUGUI>().text = level.Name;
             obj.GetComponent<Button>().onClick.AddListener(() => { PlayerPrefs.SetString("LastLevel", sName); SceneManager.LoadScene(sName); });
         }
     }

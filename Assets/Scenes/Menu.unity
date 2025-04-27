@@ -919,10 +919,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 1777063233}
   levels:
-  - {fileID: 11400000, guid: 5cd55c3b6a40b2a43b67b07cc21a05d0, type: 2}
-  - {fileID: 11400000, guid: 6a7f7166ef4eb294f9b76956532366c8, type: 2}
+  - {fileID: 11400000, guid: 8cbbdc4f237707c45b717522ad04e11b, type: 2}
   - {fileID: 11400000, guid: 535e17e5311e18645b0e84cdcb89a901, type: 2}
   - {fileID: 11400000, guid: efe3e548525719c499ea96af5eddbdcb, type: 2}
+  - {fileID: 11400000, guid: 2052c9aa51e986c48a0c8548e7aeb55b, type: 2}
   levelPrefab: {fileID: 7362089753529752413, guid: 92e3ecdf908309b4f9e42e8ae9ccfb23, type: 3}
 --- !u!1 &806757805
 GameObject:
