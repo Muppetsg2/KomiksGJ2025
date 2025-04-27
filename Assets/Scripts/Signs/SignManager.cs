@@ -78,20 +78,25 @@ public class SignManager : MonoBehaviour
         return true;
     }
 
-    public void Flip()
+    public void OnInteract()
     {
         if (showInteraction && !ruined)
         {
-            if (flipX)
-            {
-                toFlip.flipX = !toFlip.flipX;
-            }
-            if (flipY)
-            {
-                toFlip.flipY = !toFlip.flipY;
-            }
-            flipped = !flipped;
-            OnFlip?.Invoke(flipped);
+            Flip();
         }
+    }
+
+    public void Flip()
+    {
+        if (flipX)
+        {
+            toFlip.flipX = !toFlip.flipX;
+        }
+        if (flipY)
+        {
+            toFlip.flipY = !toFlip.flipY;
+        }
+        flipped = !flipped;
+        OnFlip?.Invoke(flipped);
     }
 }

@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     public float attackRadius = 0.5f;
     public LayerMask enemiesLayer;
     public LayerMask signsLayer;
+    public LayerMask nerdsLayer;
     public bool canAttack = true;
     public float attackCooldown = 2f;
 
@@ -32,6 +33,9 @@ public class PlayerMovement : MonoBehaviour
     public float knockbackSmoothTime = 1f;
     private float knockbackVelocity = 0;
     private float epsilon = 5f;
+
+    [Header("Stunt")]
+    public float stuntCooldown = 2;
 
     public Rigidbody2D rb;
 
@@ -72,8 +76,6 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocityX += currentMoventInput.x * moveSpeed * Time.fixedDeltaTime;
         }
 
-        rb.linearVelocityX = desiredVelocityX * (1f - moveSmooting) + rb.linearVelocityX * moveSmooting;
-
         if (Mathf.Abs(knockback) > 0)
         {
             knockback = Mathf.SmoothDamp(knockback, 0f, ref knockbackVelocity, knockbackSmoothTime);
@@ -81,7 +83,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 knockback = 0f;
             }
+
+            rb.linearVelocityX += knockback;
+            desiredVelocityX += knockback;
         }
+
+        rb.linearVelocityX = desiredVelocityX * (1f - moveSmooting) + rb.linearVelocityX * moveSmooting;
 
         Gravity();
 
@@ -152,6 +159,13 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        Collider2D[] nerds = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRadius, nerdsLayer);
+
+        foreach (Collider2D nerdsGameObject in nerds)
+        {
+            nerdsGameObject.gameObject.GetComponent<NerdBoss>().TakeDamage(1);
+        }
+
         attackPoint.GetComponent<SpriteRenderer>().color = Color.yellow;
 
         StartCoroutine(AttackCooldown());
@@ -176,6 +190,19 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 direction = new Vector2(transform.position.x - source.position.x, 0).normalized;
         knockback = direction.x * knockbackForce;
+    }
+
+    public void Stunt()
+    {
+        InputManager.Instance.DisablePlayer();
+        StartCoroutine(StuntCooldown());
+    }
+
+    public IEnumerator StuntCooldown()
+    {
+        yield return new WaitForSeconds(stuntCooldown);
+
+        InputManager.Instance.EnablePlayer();
     }
 
     #region [ Input ]

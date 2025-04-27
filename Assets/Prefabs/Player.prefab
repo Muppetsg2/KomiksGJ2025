@@ -137,9 +137,12 @@ MonoBehaviour:
   signsLayer:
     serializedVersion: 2
     m_Bits: 256
+  nerdsLayer:
+    serializedVersion: 2
+    m_Bits: 512
   canAttack: 1
   attackCooldown: 1
-  signKnockbackForce: 30
+  signKnockbackForce: 10
   knockback: 0
   knockbackSmoothTime: 0.2
   rb: {fileID: 2035814513951364769}
