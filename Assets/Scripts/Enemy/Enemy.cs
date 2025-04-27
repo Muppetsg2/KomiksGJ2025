@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
+public delegate void EnemyDeadEventHandler(GameObject enemy);
+
 public class Enemy : MonoBehaviour
 {
     public EnemyPatrol patrol;
@@ -28,6 +30,9 @@ public class Enemy : MonoBehaviour
     public bool canMove = true;
     public float attackCooldown = 1f;
     public float attackDistance = 2f;
+
+
+    public event EnemyDeadEventHandler OnEnemyDead;
 
     void Start()
     {
@@ -120,6 +125,7 @@ public class Enemy : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            OnEnemyDead?.Invoke(gameObject);
             Destroy(gameObject);
         }
     }
