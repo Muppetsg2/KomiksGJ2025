@@ -110,6 +110,7 @@ public class DialogueManager : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
 
         InputManager.Instance.DisableDialogMap();
+        InputManager.Instance.EnablePlayerMap();
         ExitDialogueModeRaw();
     }
 

@@ -10,6 +10,7 @@ public class EndManager : MonoBehaviour
 
     [SerializeField] private GameObject endFinishedCanvas;
     [SerializeField] private GameObject endDeathCanvas;
+    [SerializeField] private GameObject pauseCanvas;
 
     public bool isEnd = false;
 
@@ -27,6 +28,55 @@ public class EndManager : MonoBehaviour
     {
         endFinishedCanvas.SetActive(false);
         endDeathCanvas.SetActive(false);
+        pauseCanvas.SetActive(false);
+
+        InputManager.Instance.OnPausePressed += OpenPauseScreen;
+    }
+
+    public void OpenPauseScreen()
+    {
+        if (!isEnd)
+        {
+            if (!pauseCanvas.activeSelf)
+            {
+                bool isDialog = DialogueManager.Instance != null && DialogueManager.Instance.dialogueIsPlaying;
+
+                if (isDialog)
+                {
+                    InputManager.Instance.DisableDialogMap();
+                }
+                else
+                {
+                    InputManager.Instance.DisablePlayerMap();
+                }
+
+                InputManager.Instance.EnableUIMap();
+                pauseCanvas.SetActive(true);
+                Time.timeScale = 0.0f;
+            }
+            else
+            {
+                ClosePauseScreen();
+            }
+        }
+    }
+
+    public void ClosePauseScreen()
+    {
+        bool isDialog = DialogueManager.Instance != null && DialogueManager.Instance.dialogueIsPlaying;
+
+        pauseCanvas.SetActive(false);
+        Time.timeScale = 1.0f;
+        InputManager.Instance.DisableUIMap();
+
+        if (isDialog)
+        {
+            InputManager.Instance.EnableDialogMap();
+        }
+        else
+        {
+            InputManager.Instance.EnablePlayerMap();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

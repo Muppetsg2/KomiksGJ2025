@@ -92,12 +92,30 @@ public class InputManager : MonoBehaviour
     public void EnableDialogMap()
     {
         GetComponent<PlayerInput>().actions.FindActionMap("Dialog").Enable();
-        GetComponent<PlayerInput>().actions.FindActionMap("Player").Disable();
     }
 
     public void DisableDialogMap()
     {
-        GetComponent<PlayerInput>().actions.FindActionMap("Player").Enable();
         GetComponent<PlayerInput>().actions.FindActionMap("Dialog").Disable();
+    }
+
+    public void EnablePlayerMap()
+    {
+        GetComponent<PlayerInput>().actions.FindActionMap("Player").Enable();
+    }
+
+    public void DisablePlayerMap()
+    {
+        GetComponent<PlayerInput>().actions.FindActionMap("Player").Disable();
+    }
+
+    public void EnableUIMap()
+    {
+        GetComponent<PlayerInput>().actions.FindActionMap("UI").Enable();
+    }
+
+    public void DisableUIMap()
+    {
+        GetComponent<PlayerInput>().actions.FindActionMap("UI").Disable();
     }
 }
