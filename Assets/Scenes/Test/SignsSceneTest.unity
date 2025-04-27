@@ -438,11 +438,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3310853917693951102, guid: eba061bba035eb5428c1c74fab906c88, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.21
+      value: 36.37
       objectReference: {fileID: 0}
     - target: {fileID: 3310853917693951102, guid: eba061bba035eb5428c1c74fab906c88, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.24
+      value: 1.06
       objectReference: {fileID: 0}
     - target: {fileID: 3310853917693951102, guid: eba061bba035eb5428c1c74fab906c88, type: 3}
       propertyPath: m_LocalPosition.z
@@ -531,11 +531,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5909053850791604830, guid: 8b05d9bdfdd95fc4eb3f3a0439f93488, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.79
+      value: 41.37
       objectReference: {fileID: 0}
     - target: {fileID: 5909053850791604830, guid: 8b05d9bdfdd95fc4eb3f3a0439f93488, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.24
+      value: 1.06
       objectReference: {fileID: 0}
     - target: {fileID: 5909053850791604830, guid: 8b05d9bdfdd95fc4eb3f3a0439f93488, type: 3}
       propertyPath: m_LocalPosition.z
@@ -572,7 +572,7 @@ PrefabInstance:
     - target: {fileID: 6897107701428471931, guid: 8b05d9bdfdd95fc4eb3f3a0439f93488, type: 3}
       propertyPath: BoundingShape2D
       value: 
-      objectReference: {fileID: 1804419077}
+      objectReference: {fileID: 0}
     - target: {fileID: 7267842837165427077, guid: 8b05d9bdfdd95fc4eb3f3a0439f93488, type: 3}
       propertyPath: Target.TrackingTarget
       value: 
@@ -698,11 +698,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6250726425064589133, guid: cd46663c13432234b988176ee83718ae, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.374026
+      value: 41.37
       objectReference: {fileID: 0}
     - target: {fileID: 6250726425064589133, guid: cd46663c13432234b988176ee83718ae, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.5796504
+      value: 1.06
       objectReference: {fileID: 0}
     - target: {fileID: 6250726425064589133, guid: cd46663c13432234b988176ee83718ae, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1061,11 +1061,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8273fbf2d42b8714e8c6239352dda5e5, type: 3}
---- !u!61 &1804419077 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 2313455060253887777, guid: 8273fbf2d42b8714e8c6239352dda5e5, type: 3}
-  m_PrefabInstance: {fileID: 1804419076}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &182305577196826550
 PrefabInstance:
   m_ObjectHideFlags: 0

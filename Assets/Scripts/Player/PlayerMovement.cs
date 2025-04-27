@@ -60,10 +60,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float desiredVelocityX = movementInput.x * moveSpeed;
-        if (movementInput.x != 0)
+        Vector2 currentMoventInput = movementInput;
+        if (animator.GetBool("IsAttacking"))
         {
-            rb.linearVelocityX += movementInput.x * moveSpeed * Time.fixedDeltaTime;
+            currentMoventInput = Vector2.zero;
+        }
+
+        float desiredVelocityX = currentMoventInput.x * moveSpeed;
+        if (currentMoventInput.x != 0)
+        {
+            rb.linearVelocityX += currentMoventInput.x * moveSpeed * Time.fixedDeltaTime;
         }
 
         rb.linearVelocityX = desiredVelocityX * (1f - moveSmooting) + rb.linearVelocityX * moveSmooting;
@@ -104,7 +110,13 @@ public class PlayerMovement : MonoBehaviour
 
     void FlipSprite()
     {
-        if (isFacingRight && movementInput.x < 0f || !isFacingRight && movementInput.x > 0f)
+        Vector2 currentMoventInput = movementInput;
+        if (animator.GetBool("IsAttacking"))
+        {
+            currentMoventInput = Vector2.zero;
+        }
+
+        if (isFacingRight && currentMoventInput.x < 0f || !isFacingRight && currentMoventInput.x > 0f)
         {
             isFacingRight = !isFacingRight;
             Vector3 ls = transform.localScale;
@@ -120,8 +132,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void Attack()
     {
-        animator.ResetTrigger("Attack");
-
         Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRadius, enemiesLayer);
 
         foreach (Collider2D enemyGameObject in enemy)
@@ -145,6 +155,12 @@ public class PlayerMovement : MonoBehaviour
         attackPoint.GetComponent<SpriteRenderer>().color = Color.yellow;
 
         StartCoroutine(AttackCooldown());
+    }
+
+    public void EndAttack()
+    {
+        animator.ResetTrigger("Attack");
+        animator.SetBool("IsAttacking", false);
     }
 
     public IEnumerator AttackCooldown()
@@ -210,6 +226,7 @@ public class PlayerMovement : MonoBehaviour
         if (canAttack && isGrounded && animator.GetBool("Landed") && movementInput.x == 0)
         {
             animator.SetTrigger("Attack");
+            animator.SetBool("IsAttacking", true);
             canAttack = false;
         }
     }
