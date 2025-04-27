@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -22,12 +23,13 @@ public class Enemy : MonoBehaviour
 
     [Header("Attack")]
     public GameObject attackPoint;
-    public float attackRadius = 0.5f;
+    public float attackRadius = 0.75f;
+    public float damageRadius = 0.75f;
     public LayerMask playerLayer;
     public bool canAttack = true;
     public bool canMove = true;
     public float attackCooldown = 1f;
-    public float attackDistance = 2f;
+    public bool attacking = false;
 
     void Start()
     {
@@ -39,14 +41,14 @@ public class Enemy : MonoBehaviour
     {
         if (followTarget != null)
         {
-            float distance = Vector2.Distance(followTarget.transform.position, gameObject.transform.position);
+            Collider2D[] player = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRadius, playerLayer);
 
-            if (distance < attackDistance)
+            if (player.Count() != 0)
             {
                 canMove = false;
                 PlayAttack();
             }
-            else
+            else if (!attacking)
             {
                 canMove = true;
             }
@@ -129,16 +131,18 @@ public class Enemy : MonoBehaviour
         if (canAttack)
         {
             canAttack = false;
+            StartCoroutine(StartAttackCooldown());
 
             animator.ResetTrigger("RunStart");
             animator.SetTrigger("RunStop");
             animator.SetTrigger("Attack");
+            attacking = true;
         }
     }
 
     public void Attack()
     {
-        Collider2D[] player = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRadius, playerLayer);
+        Collider2D[] player = Physics2D.OverlapCircleAll(attackPoint.transform.position, damageRadius, playerLayer);
 
         foreach (Collider2D playerGameObject in player)
         {
@@ -152,8 +156,7 @@ public class Enemy : MonoBehaviour
 
         animator.ResetTrigger("RunStop");
         animator.ResetTrigger("Attack");
-
-        StartCoroutine(StartAttackCooldown());
+        attacking = false;
     }
 
     public IEnumerator StartAttackCooldown()
