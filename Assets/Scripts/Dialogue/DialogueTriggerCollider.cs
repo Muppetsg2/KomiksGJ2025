@@ -19,6 +19,7 @@ public class DialogueTriggerCollider : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            InputManager.Instance.EnableDialogMap();
             StartClicked();
         }
     }

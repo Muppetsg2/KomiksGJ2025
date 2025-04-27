@@ -31,7 +31,7 @@ public class SignManager : MonoBehaviour
         }
         else
         {
-            InputManager.Instance.OnInteractPressed += Flip;
+            InputManager.Instance.OnInteractPressed += OnInteract;
         }
         interactionObj.SetActive(showInteraction);
         toFlip.GetComponent<Rigidbody2D>().simulated = false;

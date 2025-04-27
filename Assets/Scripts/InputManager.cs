@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public delegate void NextPressedEventHandler();
+public delegate void PausePressedEventHandler();
 public delegate void InteractPressedEventHandler();
 public delegate void JumpPressedEventHandler();
 public delegate void AttackPressedEventHandler();
@@ -13,6 +14,7 @@ public class InputManager : MonoBehaviour
     private static InputManager instance;
 
     public event NextPressedEventHandler OnNextPressed;
+    public event PausePressedEventHandler OnPausePressed;
     public event InteractPressedEventHandler OnInteractPressed;
     public event JumpPressedEventHandler OnJumpPressed;
     public event AttackPressedEventHandler OnAttackPressed;
@@ -77,5 +79,25 @@ public class InputManager : MonoBehaviour
         {
             OnNextPressed?.Invoke();
         }
+    }
+
+    public void Pause(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            OnPausePressed?.Invoke();
+        }
+    }
+
+    public void EnableDialogMap()
+    {
+        GetComponent<PlayerInput>().actions.FindActionMap("Dialog").Enable();
+        GetComponent<PlayerInput>().actions.FindActionMap("Player").Disable();
+    }
+
+    public void DisableDialogMap()
+    {
+        GetComponent<PlayerInput>().actions.FindActionMap("Player").Enable();
+        GetComponent<PlayerInput>().actions.FindActionMap("Dialog").Disable();
     }
 }

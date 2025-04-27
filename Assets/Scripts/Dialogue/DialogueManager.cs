@@ -102,12 +102,14 @@ public class DialogueManager : MonoBehaviour
         actualSpeaker = 0;
         SwitchLayout(false);
         continueIcon.SetActive(false);
+        ContinueStory();
     }
 
     private IEnumerator ExitDialogueMode()
     {
         yield return new WaitForSeconds(0.2f);
 
+        InputManager.Instance.DisableDialogMap();
         ExitDialogueModeRaw();
     }
 
