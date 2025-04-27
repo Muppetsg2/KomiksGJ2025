@@ -6,6 +6,7 @@ public class VerticalDirectionSign : MonoBehaviour
     public GameObject player = null;
     public bool initDirectionIsDown = true;
     public bool isDown = true;
+    public float upBoost = 2.0f;
 
     private void OnValidate()
     {
@@ -50,7 +51,7 @@ public class VerticalDirectionSign : MonoBehaviour
             }
             else
             {
-                rb.linearVelocityY *= 2;
+                rb.linearVelocityY *= upBoost;
             }
         }
     }
