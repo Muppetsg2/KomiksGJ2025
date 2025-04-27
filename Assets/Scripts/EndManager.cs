@@ -30,6 +30,11 @@ public class EndManager : MonoBehaviour
         endDeathCanvas.SetActive(false);
         pauseCanvas.SetActive(false);
 
+        Time.timeScale = 1.0f;
+        InputManager.Instance.DisableUIMap();
+        InputManager.Instance.DisableDialogMap();
+        InputManager.Instance.EnablePlayerMap();
+
         InputManager.Instance.OnPausePressed += OpenPauseScreen;
     }
 
@@ -98,18 +103,27 @@ public class EndManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GoToScene(SceneManager.GetActiveScene().name);
     }
 
     public void NextLevel(string level)
     {
         PlayerPrefs.SetString("LastLevel", level);
-        SceneManager.LoadScene(level);
+        GoToScene(level);
     }
 
     public void Menu()
     {
-        SceneManager.LoadScene("Menu");
+        GoToScene("Menu");
+    }
+
+    private void GoToScene(string name)
+    {
+        pauseCanvas.SetActive(false);
+        Time.timeScale = 1.0f;
+        InputManager.Instance.DisableUIMap();
+        InputManager.Instance.EnablePlayerMap();
+        SceneManager.LoadScene(name);
     }
 
     public void Exit()
