@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      nerd_frame_0002_0: -1114108482933454270
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
