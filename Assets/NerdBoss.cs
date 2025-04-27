@@ -118,7 +118,8 @@ public class NerdBoss : MonoBehaviour
         if (value < maxHealth)
         {
             StartBattle();
-            TakeDamage(value);
+            currentHealth -= value;
+            healthUI.UpdateHearts(currentHealth);
         }
         else
         {
