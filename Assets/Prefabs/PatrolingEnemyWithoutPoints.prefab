@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 14707098890075226}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.44, y: 0.29, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.85, y: 0.82, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1934951949484680822}
@@ -205,14 +205,15 @@ MonoBehaviour:
   currentHealth: 1
   maxHealth: 1
   attackPoint: {fileID: 14707098890075226}
-  attackRadius: 2
+  attackRadius: 0.75
+  damageRadius: 0.75
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
   canAttack: 1
   canMove: 1
   attackCooldown: 2
-  attackDistance: 2
+  attacking: 0
 --- !u!114 &216694712707243119
 MonoBehaviour:
   m_ObjectHideFlags: 0
