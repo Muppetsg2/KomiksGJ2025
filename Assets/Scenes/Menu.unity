@@ -923,6 +923,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 535e17e5311e18645b0e84cdcb89a901, type: 2}
   - {fileID: 11400000, guid: efe3e548525719c499ea96af5eddbdcb, type: 2}
   - {fileID: 11400000, guid: 2052c9aa51e986c48a0c8548e7aeb55b, type: 2}
+  - {fileID: 11400000, guid: ef1d076d60459d44ea5fd836a575bd15, type: 2}
   levelPrefab: {fileID: 7362089753529752413, guid: 92e3ecdf908309b4f9e42e8ae9ccfb23, type: 3}
 --- !u!1 &806757805
 GameObject:
