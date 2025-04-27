@@ -43,8 +43,7 @@ public class PlayerHealth : MonoBehaviour
 
             if (currentHealth <= 0)
             {
-                //Player death
-                Debug.Log("DEATH");
+                EndManager.Instance.OpenDeathScreen();
             }
         }
     }

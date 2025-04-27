@@ -172,7 +172,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      tetris_0: 1452254303932773648
+      tetris_1: 1464277971873697548
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
