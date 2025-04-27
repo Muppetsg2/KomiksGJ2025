@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Attack")]
     public GameObject attackPoint;
-    public float attackRadius = 0.5f;
+    public float attackRadius = 0.75f;
     public LayerMask enemiesLayer;
     public LayerMask signsLayer;
     public LayerMask nerdsLayer;

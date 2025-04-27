@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using EasyTextEffects;
 
+public delegate void OnDialogueEndEventHandler();
+
 public class DialogueManager : MonoBehaviour
 {
     [Header("Params")]
@@ -34,6 +36,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Image leftSpeakerImage;
     [SerializeField] private SpeakerObject[] speakers;
 
+    public event OnDialogueEndEventHandler OnDialogueEnd;
+
     private int actualSpeaker = 0;
     private TextMeshProUGUI actualDisplayName;
     private Image actualSpeakerImage;
@@ -46,6 +50,7 @@ public class DialogueManager : MonoBehaviour
     public static DialogueManager Instance { get { return instance; } }
 
     public bool dialogueIsPlaying { get; private set; }
+    public int GoodAnswers { get; private set; }
 
     private bool canContinueToTheNextLine = true;
     private bool buttonClickedWhileTyping = false;
@@ -112,6 +117,7 @@ public class DialogueManager : MonoBehaviour
         InputManager.Instance.DisableDialogMap();
         InputManager.Instance.EnablePlayerMap();
         ExitDialogueModeRaw();
+        OnDialogueEnd?.Invoke();
     }
 
     private void ExitDialogueModeRaw()

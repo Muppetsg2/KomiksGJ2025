@@ -134,7 +134,7 @@ MonoBehaviour:
   maxFallSpeed: 15
   fallGravityMult: 2
   attackPoint: {fileID: 4167079131975227833}
-  attackRadius: 0.5
+  attackRadius: 0.75
   enemiesLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -480,8 +480,8 @@ Transform:
   m_GameObject: {fileID: 4167079131975227833}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.4, y: 0.947, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1.22, y: 1.07, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3310853917693951102}

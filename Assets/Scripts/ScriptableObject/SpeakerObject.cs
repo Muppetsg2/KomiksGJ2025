@@ -8,11 +8,13 @@ public class SpeakerObject : ScriptableObject
     public Sprite angry;
     public Sprite happy;
     public Sprite sad;
+    public Sprite suprised;
 
     private const string NEUTRAL_TAG = "neutral";
     private const string ANGRY_TAG = "angry";
     private const string HAPPY_TAG = "happy";
     private const string SAD_TAG = "sad";
+    private const string SUPRISED_TAG = "suprised";
 
     public Sprite GetSprite(string name)
     {
@@ -27,6 +29,8 @@ public class SpeakerObject : ScriptableObject
                 return happy;
             case SAD_TAG:
                 return sad;
+            case SUPRISED_TAG:
+                return suprised;
             default:
                 Debug.LogError("Sprite Name came in but is not currently being handle: " + name);
                 break;
