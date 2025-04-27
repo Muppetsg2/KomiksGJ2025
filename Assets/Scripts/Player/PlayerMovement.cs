@@ -118,12 +118,37 @@ public class PlayerMovement : MonoBehaviour
     //    isJumping = false;
     //}
 
-    public IEnumerator StartAttackCooldown()
+    public void Attack()
     {
-        canAttack = false;
+        animator.ResetTrigger("Attack");
+
+        Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRadius, enemiesLayer);
+
+        foreach (Collider2D enemyGameObject in enemy)
+        {
+            if (!enemyGameObject.isTrigger)
+            {
+                enemyGameObject.gameObject.GetComponent<Enemy>().TakeDamage(1);
+            }
+        }
+
+        Collider2D[] signs = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRadius, signsLayer);
+
+        foreach (Collider2D signGameObject in signs)
+        {
+            if (!signGameObject.gameObject.GetComponent<SignManager>().Ruin())
+            {
+                Knockback(signGameObject.gameObject.transform, signKnockbackForce);
+            }
+        }
 
         attackPoint.GetComponent<SpriteRenderer>().color = Color.yellow;
 
+        StartCoroutine(AttackCooldown());
+    }
+
+    public IEnumerator AttackCooldown()
+    {
         yield return new WaitForSeconds(attackCooldown);
 
         canAttack = true;
@@ -182,29 +207,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnAttack()
     {
-        if (canAttack)
+        if (canAttack && isGrounded && animator.GetBool("Landed") && movementInput.x == 0)
         {
-            Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRadius, enemiesLayer);
-
-            foreach (Collider2D enemyGameObject in enemy)
-            {
-                if (!enemyGameObject.isTrigger)
-                {
-                    enemyGameObject.gameObject.GetComponent<Enemy>().TakeDamage(1);
-                }
-            }
-
-            Collider2D[] signs = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRadius, signsLayer);
-
-            foreach (Collider2D signGameObject in signs)
-            {
-                if(!signGameObject.gameObject.GetComponent<SignManager>().Ruin())
-                {
-                    Knockback(signGameObject.gameObject.transform, signKnockbackForce);
-                }
-            }
-
-            StartCoroutine(StartAttackCooldown());
+            animator.SetTrigger("Attack");
+            canAttack = false;
         }
     }
 
