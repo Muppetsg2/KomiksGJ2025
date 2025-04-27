@@ -35,9 +35,6 @@ public class NerdBoss : MonoBehaviour
         target = GameObject.FindGameObjectWithTag(playerTag);
         healthUI.gameObject.SetActive(false);
         nerdText.SetActive(false);
-
-        // To tylko gdy zacznie siê walka (na razie dla testu)
-        StartBattle();
     }
 
     private void Update()
