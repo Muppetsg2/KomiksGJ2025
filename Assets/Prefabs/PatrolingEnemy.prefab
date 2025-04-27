@@ -173,6 +173,7 @@ MonoBehaviour:
   rb: {fileID: 2856788559846465233}
   patrolSpeed: 0
   followSpeed: 3
+  moveSmoothing: 0.5
   isRight: 1
   playerTag: Player
   followTarget: {fileID: 0}
@@ -185,9 +186,9 @@ MonoBehaviour:
     m_Bits: 64
   canAttack: 1
   canMove: 1
-  prepareToAttackTime: 1
-  attackTime: 1
-  attackCooldown: 1
+  prepareToAttackTime: 0.6
+  attackTime: 0.8
+  attackCooldown: 0.3
   attackDistance: 2
 --- !u!114 &8590853552447653830
 MonoBehaviour:
