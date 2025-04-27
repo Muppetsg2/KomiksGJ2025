@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7550654391969409937}
   - component: {fileID: 2885560083666160035}
   - component: {fileID: 3935463376425135798}
+  - component: {fileID: 8297577804103917927}
   m_Layer: 0
   m_Name: BgAudio
   m_TagString: Untagged
@@ -46,9 +47,9 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 02789d0e64fc1084f9dd970d604bbd86, type: 3}
   m_Resource: {fileID: 8300000, guid: 02789d0e64fc1084f9dd970d604bbd86, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.2
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -142,3 +143,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e5d1f5c61e90bc4ba69b352d55eb8c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8297577804103917927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3882481321073261860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61f421885bec8ed438b22b9c1295f404, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuVolume: 0.2
+  gameVolume: 0.1
+  bgSource: {fileID: 2885560083666160035}
