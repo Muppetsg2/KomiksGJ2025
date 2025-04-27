@@ -7,6 +7,8 @@ public class EnemySpawner : MonoBehaviour
     public GameObject doors;
     public GameObject sign;
 
+    public AudioSource audioSource;
+
     public float enemySpawnCooldown = 3;
     public int maxEnemyNumber = 2;
     public GameObject enemyPrefab;
@@ -52,6 +54,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void Close()
     {
+        audioSource.Play();
         closed = true;
         doors.SetActive(false);
         sign.GetComponent<Rigidbody2D>().simulated = true;

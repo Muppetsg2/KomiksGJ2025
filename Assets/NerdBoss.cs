@@ -9,6 +9,8 @@ public class NerdBoss : MonoBehaviour
 
     public Rigidbody2D rb;
     public Animator animator;
+    public AudioSource shootAudioSource;
+    public AudioSource saiyanAudioSource;
 
     public Transform[] movePoints;
     public int currentPoint = 0;
@@ -98,6 +100,8 @@ public class NerdBoss : MonoBehaviour
         GameObject projectile = Instantiate(signProjectiles[Random.Range(0, signProjectiles.Length)], transform.position, Quaternion.identity);
         projectile.GetComponent<Projectile>().SetVelocity(direction * projectileSpeed);
 
+        shootAudioSource.Play();
+
         StartCoroutine(AttackCooldown());
     }
 
@@ -115,6 +119,7 @@ public class NerdBoss : MonoBehaviour
         healthUI.UpdateHearts(currentHealth);
 
         animator.SetTrigger("Became Saian");
+        saiyanAudioSource.Play();
     }
 
     public void SaianEnd()
