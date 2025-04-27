@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
 
     public AudioSource footstepsAudioSource;
     public AudioSource kickAudioSource;
+    public AudioSource jumpAudioSource;
+    public AudioSource landAudioSource;
 
     [Header("Gravity")]
     public float baseGravity = 1f;
@@ -252,6 +254,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isGrounded)
         {
+            jumpAudioSource.Play();
             rb.linearVelocityY = jumpPower;
             isGrounded = false;
             animator.SetBool("IsGrounded", isGrounded);
@@ -265,6 +268,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnLanded()
     {
+        landAudioSource.Play();
         animator.ResetTrigger("Landing");
         animator.SetBool("Landed", true);
         if (movementInput.x != 0)
