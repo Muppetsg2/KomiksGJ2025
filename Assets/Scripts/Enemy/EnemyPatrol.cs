@@ -60,8 +60,8 @@ public class EnemyPatrol : MonoBehaviour
         if (Mathf.Abs(transform.position.x - patrolPoints[currentPoint].position.x) <= 0.01f * enemy.patrolSpeed)
         {
             currentPoint = (currentPoint + 1) % patrolPoints.Length;
-            enemy.animator.ResetTrigger("RunStart");
-            enemy.animator.SetTrigger("RunStop");
+            //enemy.animator.ResetTrigger("RunStart");
+            //enemy.animator.SetTrigger("RunStop");
         }
     }
 }
