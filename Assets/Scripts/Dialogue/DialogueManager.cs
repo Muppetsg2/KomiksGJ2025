@@ -39,6 +39,7 @@ public class DialogueManager : MonoBehaviour
     public event OnDialogueEndEventHandler OnDialogueEnd;
 
     private int actualSpeaker = 0;
+    private string actualSprite = "neutral";
     private TextMeshProUGUI actualDisplayName;
     private Image actualSpeakerImage;
     private bool left = true;
@@ -104,10 +105,24 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(true);
 
         actualDisplayName.text = "???";
+        actualSprite = "neutral";
         actualSpeaker = 0;
         SwitchLayout(false);
         continueIcon.SetActive(false);
+
+        GoodAnswers = 0;
+
+        currentStory.BindExternalFunction("AddGoodAnswer", (string points) =>
+        {
+            AddGoodAnswer();
+        });
+
         ContinueStory();
+    }
+
+    private void AddGoodAnswer()
+    {
+        GoodAnswers++;
     }
 
     private IEnumerator ExitDialogueMode()
@@ -158,12 +173,15 @@ public class DialogueManager : MonoBehaviour
                 case SPEAKER_TAG:
                     int speaker = int.Parse(tagValue);
                     string text = "???";
+                    Sprite s = null;
                     if (speaker >= 0 && speaker < speakers.Length)
                     {
                         actualSpeaker = speaker;
                         text = speakers[speaker].displayName;
+                        s = speakers[speaker].GetSprite(actualSprite);
                     }
                     actualDisplayName.text = text;
+                    actualSpeakerImage.sprite = s;
                     break;
                 case PORTRAIT_TAG:
                     actualSpeakerImage.sprite = speakers[actualSpeaker].GetSprite(tagValue);
@@ -245,7 +263,23 @@ public class DialogueManager : MonoBehaviour
 
             currentStory.Continue();
 
-            ContinueStory();
+            if (currentStory.currentText != "\n" && currentStory.currentText != "")
+            {
+                if (currentStory.canContinue)
+                {
+                    if (typeCoroutine != null) StopCoroutine(typeCoroutine);
+                    typeCoroutine = StartCoroutine(TypeText(currentStory.currentText));
+                    HandleTags(currentStory.currentTags);
+                }
+                else
+                {
+                    StartCoroutine(ExitDialogueMode());
+                }
+            }
+            else
+            {
+                ContinueStory();
+            }
         }
     }
 
@@ -292,7 +326,6 @@ public class DialogueManager : MonoBehaviour
                 if (letter == '>')
                 {
                     isAddingRichTextTag = false;
-                    dialogueTextEfect.Refresh();
                 }
             }
             else
@@ -300,6 +333,8 @@ public class DialogueManager : MonoBehaviour
                 dialogueText.text += letter;
                 yield return new WaitForSeconds(typingSpeed);
             }
+
+            dialogueTextEfect.Refresh();
         }
 
         continueIcon.SetActive(true);
