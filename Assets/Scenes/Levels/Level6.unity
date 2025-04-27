@@ -348,6 +348,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 420722699}
     m_Modifications:
+    - target: {fileID: 2722869407478394707, guid: 977d35c49a6922d45857633ccbf4b55b, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 2722869407478394707, guid: 977d35c49a6922d45857633ccbf4b55b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_ActionId
+      value: fcaca894-568b-417c-8e72-cff7c7d6c677
+      objectReference: {fileID: 0}
+    - target: {fileID: 2722869407478394707, guid: 977d35c49a6922d45857633ccbf4b55b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_ActionName
+      value: 'Player/Pause[/Keyboard/escape]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6104279846821232991, guid: 977d35c49a6922d45857633ccbf4b55b, type: 3}
       propertyPath: m_Name
       value: InputManager
