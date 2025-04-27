@@ -120,33 +120,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 189
-        width: 19
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 953d1873d10068f30800000000000000
-      internalID: 4577346196753994585
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: nerd_frame_0003_1
-      rect:
-        serializedVersion: 2
-        x: 2
         y: 0
-        width: 198
+        width: 200
         height: 350
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -163,7 +141,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: a06819a5501cd8b43a651c80b564f05d
     internalID: 0
     vertices: []
     indices: 
@@ -173,8 +151,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      nerd_frame_0003_0: 4577346196753994585
-      nerd_frame_0003_1: -489687333636512053
+      nerd_frame_0003_0: -489687333636512053
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

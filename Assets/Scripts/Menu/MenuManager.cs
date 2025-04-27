@@ -8,6 +8,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Button continueBtn;
     [SerializeField] private GameObject levelsCanvas;
     [SerializeField] private GameObject menuCanvas;
+    [SerializeField] private GameObject creditsCanvas;
 
     private void Start()
     {
@@ -25,12 +26,21 @@ public class MenuManager : MonoBehaviour
     {
         menuCanvas.SetActive(false);
         levelsCanvas.SetActive(true);
+        creditsCanvas.SetActive(false);
     }
 
     public void Menu()
     {
         menuCanvas.SetActive(true);
         levelsCanvas.SetActive(false);
+        creditsCanvas.SetActive(false);
+    }
+
+    public void Credits()
+    {
+        menuCanvas.SetActive(false);
+        levelsCanvas.SetActive(false);
+        creditsCanvas.SetActive(true);
     }
 
     public void Exit()

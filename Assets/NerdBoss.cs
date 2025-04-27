@@ -8,12 +8,14 @@ public class NerdBoss : MonoBehaviour
     public LayerMask signLayer;
 
     public Rigidbody2D rb;
+    public Animator animator;
 
     public Transform[] movePoints;
     public int currentPoint = 0;
     public float moveSpeed = 6;
     public float moveSmoothing = 0.5f;
     public bool canMove = false;
+    public bool isRight = false;
 
     public int currentHealth = 4;
     public int maxHealth = 4;
@@ -42,10 +44,13 @@ public class NerdBoss : MonoBehaviour
         if (defeated) return;
         if (!battleStarted) return;
 
-        if (Vector2.Distance(transform.position, movePoints[currentPoint].position) <= 0.01f * moveSpeed)
+        if (Vector2.Distance(transform.position, movePoints[currentPoint].position) <= 0.01f * moveSpeed && canMove)
         {
             rb.linearVelocity = Vector2.zero;
             canMove = false;
+            animator.ResetTrigger("Fly");
+            animator.SetTrigger("FlyEnd");
+            canAttack = true;
         }
 
         Attack();
@@ -67,6 +72,17 @@ public class NerdBoss : MonoBehaviour
         }
 
         rb.linearVelocity = desiredVelocity * (1f - moveSmoothing) + rb.linearVelocity * moveSmoothing;
+
+        if (rb.linearVelocityX >= 0 && !isRight)
+        {
+            isRight = true;
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        }
+        else if (rb.linearVelocityX < 0 && isRight)
+        {
+            isRight = false;
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        }
     }
 
     public void Attack()
@@ -89,14 +105,26 @@ public class NerdBoss : MonoBehaviour
     {
         battleStarted = true;
         canMove = false;
-        canAttack = true;
-        transform.position = movePoints[currentPoint].position;
+        canAttack = false;
+        currentPoint = 0;
         rb.linearVelocity = Vector2.zero;
         healthUI.gameObject.SetActive(true);
         nerdText.SetActive(true);
 
         healthUI.SetMaxHearts(maxHealth);
         healthUI.UpdateHearts(currentHealth);
+
+        animator.SetTrigger("Became Saian");
+    }
+
+    public void SaianEnd()
+    {
+        animator.SetFloat("Saian", 1f);
+
+        canMove = true;
+
+        animator.ResetTrigger("Became Saian");
+        animator.SetTrigger("Fly");
     }
 
     public void TakeDamage(int damage)
@@ -116,6 +144,9 @@ public class NerdBoss : MonoBehaviour
             canMove = true;
             int newPoint = Random.Range(0, movePoints.Length - 1);
             currentPoint = newPoint == currentPoint ? ((currentPoint + 1) % movePoints.Length) : newPoint;
+
+            animator.ResetTrigger("FlyEnd");
+            animator.SetTrigger("Fly");
         }
     }
 
