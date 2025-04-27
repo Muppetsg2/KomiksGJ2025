@@ -125,7 +125,7 @@ TextureImporter:
         height: 95
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 20, y: 18, z: 22, w: 15}
+      border: {x: 12, y: 14, z: 13, w: 12}
       customData: 
       outline: []
       physicsShape: []
@@ -137,12 +137,34 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: option_box_1
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 0
+        width: 5
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22cabae7a1d3824f0800000000000000
+      internalID: -853364945383085022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    spriteID: c997dc575b6cafb49a4879bbd37b83cf
+    internalID: 0
     vertices: []
     indices: 
     edges: []

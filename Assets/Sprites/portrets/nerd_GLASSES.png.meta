@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      nerd_GLASSES_0: 3242300773196182095
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
