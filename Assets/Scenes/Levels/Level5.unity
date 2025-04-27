@@ -175,14 +175,6 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: -1
       objectReference: {fileID: 0}
-    - target: {fileID: 7221816663031499652, guid: 028189b041cab3247b5863588533ae37, type: 3}
-      propertyPath: m_Size.y
-      value: 4.550312
-      objectReference: {fileID: 0}
-    - target: {fileID: 7221816663031499652, guid: 028189b041cab3247b5863588533ae37, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.030156136
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -820,7 +812,7 @@ SpriteRenderer:
   m_Size: {x: 5, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &307767340
@@ -2541,14 +2533,6 @@ PrefabInstance:
     - target: {fileID: 1763488164680682908, guid: 028189b041cab3247b5863588533ae37, type: 3}
       propertyPath: m_SortingOrder
       value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7221816663031499652, guid: 028189b041cab3247b5863588533ae37, type: 3}
-      propertyPath: m_Size.y
-      value: 4.550312
-      objectReference: {fileID: 0}
-    - target: {fileID: 7221816663031499652, guid: 028189b041cab3247b5863588533ae37, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.030156136
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4380,11 +4364,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6250726425064589133, guid: cd46663c13432234b988176ee83718ae, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.355175
+      value: 5.352565
       objectReference: {fileID: 0}
     - target: {fileID: 6250726425064589133, guid: cd46663c13432234b988176ee83718ae, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.56052
+      value: 3.56053
       objectReference: {fileID: 0}
     - target: {fileID: 6250726425064589133, guid: cd46663c13432234b988176ee83718ae, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4494,14 +4478,6 @@ PrefabInstance:
     - target: {fileID: 1763488164680682908, guid: 028189b041cab3247b5863588533ae37, type: 3}
       propertyPath: m_SortingOrder
       value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7221816663031499652, guid: 028189b041cab3247b5863588533ae37, type: 3}
-      propertyPath: m_Size.y
-      value: 4.550312
-      objectReference: {fileID: 0}
-    - target: {fileID: 7221816663031499652, guid: 028189b041cab3247b5863588533ae37, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.030156136
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
