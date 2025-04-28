@@ -23,4 +23,9 @@ public class BGAudio : MonoBehaviour
             bgSource.volume = gameVolume;
         }
     }
+
+    private void OnDestroy()
+    {
+        SceneManager.activeSceneChanged -= OnActiveSceneChanged;
+    }
 }
