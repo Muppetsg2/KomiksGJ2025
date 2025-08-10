@@ -5,10 +5,10 @@
 </p>
 
 ## What is it?
-There are Signs is a game developed on Unity Engine for Komiks Game Jam 2k25 competition. Theme of this competition was: "There's no accidents, only signs".
+**There are Signs** is a game developed on Unity Engine for Komiks Game Jam 2k25 competition. Theme of this competition was: "*There's no accidents, only signs*".
 
 ## Overview
-There are Signs is a logic platformer game. You can use signs to manipulate environment and movement. Use your kicks to defeat your enemies. Game take place in Japanese streets and school. Best your enemies and elites in your school to become popular. 
+**There are Signs** is a logic platformer game. You can use signs to manipulate environment and movement. Use your kicks to defeat your enemies. Game take place in Japanese streets and school. Best your enemies and elites in your school to become popular. 
 
 ## How to play?
 Go to: https://muppetsg2.itch.io/there-are-signs
